@@ -46,21 +46,20 @@
     /* ─── Reveal ─── */
     .reveal-wrap { max-width: 440px; margin: 0 auto; padding: 40px 20px; text-align: center; }
     .reveal-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
-    .reveal-sub { color: var(--subtext); font-size: 0.85rem; margin-bottom: 36px; min-height: 20px; }
+    .reveal-sub { color: var(--subtext); font-size: 0.85rem; margin-bottom: 28px; min-height: 20px; }
     .hat-btn {
       background: none; border: none; cursor: pointer; font-size: 100px; line-height: 1;
-      display: block; margin: 0 auto 32px;
+      display: block; margin: 40px auto 36px;
       transform: scaleY(-1);
-      filter: drop-shadow(0 6px 24px rgba(247,166,0,0.25));
       transition: transform 0.1s;
       touch-action: manipulation; user-select: none;
     }
-    .hat-btn:active { transform: scaleY(-1) scale(0.94); }
+    .hat-btn:active { transform: scaleY(-1) scale(0.93); }
     .hat-btn.shake { animation: hatShake 0.55s ease-in-out; }
     @keyframes hatShake {
       0%,100% { transform: scaleY(-1) rotate(0deg); }
-      15%  { transform: scaleY(-1) rotate(-11deg); }
-      35%  { transform: scaleY(-1) rotate(11deg); }
+      15%  { transform: scaleY(-1) rotate(-12deg); }
+      35%  { transform: scaleY(-1) rotate(12deg); }
       55%  { transform: scaleY(-1) rotate(-7deg); }
       75%  { transform: scaleY(-1) rotate(7deg); }
       90%  { transform: scaleY(-1) rotate(-3deg); }
@@ -77,12 +76,10 @@
     .order-name { font-weight: 700; font-size: 1rem; }
     .order-badge { margin-left: auto; font-size: 0.7rem; color: var(--subtext); }
     .btn-go { display: none; max-width: 300px; margin: 0 auto; }
-    .tap-hint { color: var(--subtext); font-size: 0.78rem; margin-bottom: 0; }
 
     /* ─── Draft ─── */
     .draft-wrap { max-width: 960px; margin: 0 auto; padding: 14px; }
 
-    /* Teams top bar */
     .teams-bar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 14px; scrollbar-width: none; }
     .teams-bar::-webkit-scrollbar { display: none; }
     .team-tile {
@@ -98,29 +95,35 @@
     .tt-pick-ovr { color: var(--accent); font-weight: 700; }
     .tt-empty { font-size: 0.7rem; color: var(--subtext); font-style: italic; }
 
-    /* Current pick bar */
     .pick-bar {
-      background: var(--card); border-radius: var(--radius); padding: 14px 18px;
+      background: var(--card); border-radius: var(--radius); padding: 12px 16px;
       margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
     }
     .pb-left { display: flex; align-items: center; gap: 10px; }
-    .pb-dot { width: 11px; height: 11px; border-radius: 50%; animation: dotPulse 1.5s ease-in-out infinite; }
+    .pb-dot { width: 11px; height: 11px; border-radius: 50%; animation: dotPulse 1.5s ease-in-out infinite; flex-shrink: 0; }
     @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.72)} }
     .pb-lbl { font-size: 0.65rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 0.08em; }
-    .pb-name { font-size: 1.05rem; font-weight: 800; }
-    .pb-badge { background: var(--card2); border-radius: 8px; padding: 5px 11px; font-size: 0.72rem; color: var(--subtext); white-space: nowrap; }
+    .pb-name { font-size: 1rem; font-weight: 800; }
+    .pb-right { display: flex; align-items: center; gap: 8px; }
+    .pb-badge { background: var(--card2); border-radius: 8px; padding: 5px 10px; font-size: 0.72rem; color: var(--subtext); white-space: nowrap; }
     .pb-badge strong { color: var(--text); }
+    .btn-back {
+      background: var(--card2); border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 5px 10px; font-size: 0.72rem; font-weight: 600; color: var(--subtext);
+      cursor: pointer; font-family: inherit; touch-action: manipulation; white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .btn-back:hover { color: var(--text); border-color: var(--subtext); }
+    .btn-back:disabled { opacity: 0.3; cursor: not-allowed; }
 
-    /* Player list */
     .section-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
     .player-card {
       display: flex; align-items: center; gap: 11px; background: var(--card);
       border-radius: 10px; padding: 10px 13px; margin-bottom: 7px;
       cursor: pointer; border: 1.5px solid transparent; transition: border-color 0.12s, background 0.12s;
-      touch-action: manipulation; user-select: none;
+      touch-action: manipulation; user-select: none; outline: none;
     }
     .player-card:hover { border-color: var(--accent); background: var(--card2); }
-    .player-card:active { background: color-mix(in srgb, var(--accent) 12%, var(--card)); }
     .p-rank { width: 24px; font-size: 0.65rem; color: var(--subtext); font-weight: 600; text-align: center; flex-shrink: 0; }
     .p-info { flex: 1; min-width: 0; }
     .p-name { font-size: 0.87rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -132,17 +135,41 @@
       cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation;
     }
     .show-more:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* Bottom button */
-    .btn-bottom {
-      width: 100%; margin-top: 16px; padding: 13px;
-      background: transparent; border: 1.5px solid var(--border);
-      border-radius: 10px; color: var(--subtext); font-size: 0.88rem; font-weight: 600;
-      cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation;
+    .btn-end {
+      width: 100%; margin-top: 16px; padding: 13px; background: transparent;
+      border: 1.5px solid var(--border); border-radius: 10px; color: var(--subtext);
+      font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit;
+      transition: all 0.15s; touch-action: manipulation;
     }
-    .btn-bottom.end:hover { border-color: #ff453a; color: #ff453a; }
-    .btn-bottom.new { border-color: var(--accent); color: var(--accent); }
-    .btn-bottom.new:hover { background: rgba(247,166,0,0.08); }
+    .btn-end:hover { border-color: #ff453a; color: #ff453a; }
+
+    /* ─── Summary ─── */
+    .summary-wrap { max-width: 960px; margin: 0 auto; padding: 24px 14px; }
+    .summary-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 4px; text-align: center; }
+    .summary-sub { color: var(--subtext); font-size: 0.82rem; text-align: center; margin-bottom: 24px; }
+    .summary-teams { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 24px; align-items: flex-start; scrollbar-width: none; }
+    .summary-teams::-webkit-scrollbar { display: none; }
+    .sum-team { flex-shrink: 0; min-width: 160px; background: var(--card); border-radius: var(--radius); padding: 14px; border-top: 3px solid var(--tc); }
+    .sum-team-name { font-size: 0.9rem; font-weight: 800; margin-bottom: 10px; }
+    .sum-pick { display: flex; align-items: baseline; gap: 6px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+    .sum-pick:last-child { border-bottom: none; }
+    .sum-pick-n { font-size: 0.62rem; color: var(--subtext); flex-shrink: 0; width: 16px; }
+    .sum-pick-name { font-size: 0.8rem; font-weight: 600; flex: 1; }
+    .sum-pick-ovr { font-size: 0.75rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+    .summary-actions { display: flex; flex-direction: column; gap: 10px; max-width: 440px; margin: 0 auto; }
+    .btn-redraft {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #000; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px;
+      cursor: pointer; font-family: inherit; touch-action: manipulation;
+    }
+    .btn-startover {
+      width: 100%; padding: 13px; background: transparent;
+      border: 1.5px solid var(--border); border-radius: 14px; color: var(--subtext);
+      font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit;
+      touch-action: manipulation; transition: all 0.15s;
+    }
+    .btn-startover:hover { border-color: var(--subtext); color: var(--text); }
   </style>
 </head>
 <body>
@@ -162,7 +189,7 @@
 <div class="screen" id="screen-reveal">
   <div class="reveal-wrap">
     <div class="reveal-title">Draft Order</div>
-    <div class="reveal-sub tap-hint" id="reveal-sub">Tap the hat to draw a name</div>
+    <div class="reveal-sub" id="reveal-sub">Tap the hat to draw a name</div>
     <button class="hat-btn" id="hat" onclick="drawNext()">🎩</button>
     <div class="order-list" id="order-list"></div>
     <button class="btn-primary btn-go" id="btn-go">Start Drafting →</button>
@@ -181,12 +208,28 @@
           <div class="pb-name" id="pb-name"></div>
         </div>
       </div>
-      <div class="pb-badge">Pick <strong id="pb-pick">1</strong> · Round <strong id="pb-round">1</strong></div>
+      <div class="pb-right">
+        <button class="btn-back" id="btn-back" onclick="undoPick()" disabled>← Back</button>
+        <div class="pb-badge">Pick <strong id="pb-pick">1</strong> · Round <strong id="pb-round">1</strong></div>
+      </div>
     </div>
     <div class="section-lbl">Available Players</div>
     <div id="players-list"></div>
     <button class="show-more" id="show-more">Show 20 More ↓</button>
-    <button class="btn-bottom end" id="btn-bottom" onclick="endOrReset()">End Draft</button>
+    <button class="btn-end" id="btn-end" onclick="endDraft()">End Draft</button>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="screen" id="screen-summary">
+  <div class="summary-wrap">
+    <div class="summary-title">🏆 Draft Summary</div>
+    <div class="summary-sub" id="summary-sub"></div>
+    <div class="summary-teams" id="summary-teams"></div>
+    <div class="summary-actions">
+      <button class="btn-redraft" onclick="redraft()">Re-draft (Same Order)</button>
+      <button class="btn-startover" onclick="startOver()">Start Over</button>
+    </div>
   </div>
 </div>
 
@@ -299,15 +342,15 @@
   ];
 
   // ── State ──
-  let selected    = new Set();  // NAMES indices
-  let teams       = [];         // [{name, color, picks:[rank,...]}]
-  let draftOrder  = [];         // team indices
-  let drawIndex   = 0;          // how many have been drawn from hat
-  let shuffled    = [];         // shuffled team indices for reveal
+  let selected    = new Set();
+  let teams       = [];
+  let draftOrder  = [];
+  let remaining   = [];   // team indices not yet drawn from hat
+  let drawIndex   = 0;
   let currentPick = 0;
   let available   = [];
+  let history     = [];   // [{teamIdx, rank}]
   let showCount   = 20;
-  let draftDone   = false;
 
   // ── Setup ──
   const grid = document.getElementById('players-grid');
@@ -315,10 +358,8 @@
     const btn = document.createElement('button');
     btn.className = 'player-toggle';
     btn.textContent = name;
-    btn.dataset.i = i;
     btn.addEventListener('click', () => {
-      if (selected.has(i)) selected.delete(i);
-      else selected.add(i);
+      selected.has(i) ? selected.delete(i) : selected.add(i);
       btn.classList.toggle('on', selected.has(i));
       document.getElementById('btn-start').disabled = selected.size < 2;
     });
@@ -326,19 +367,16 @@
   });
 
   document.getElementById('btn-start').addEventListener('click', () => {
-    const sel = [...selected].sort((a,b) => a - b);
+    const sel = [...selected].sort((a, b) => a - b);
     teams = sel.map(i => ({ name: NAMES[i], color: COLORS[i], picks: [] }));
-    available = PLAYERS.map(p => p.rank);
-    currentPick = 0; draftDone = false; showCount = 20;
-
-    // Shuffle for reveal
-    shuffled = Array.from({length: teams.length}, (_, i) => i);
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    draftOrder = shuffled;
+    // remaining = all team indices, to be drawn randomly from hat
+    remaining = Array.from({length: teams.length}, (_, i) => i);
+    draftOrder = [];
     drawIndex  = 0;
+    available  = PLAYERS.map(p => p.rank);
+    currentPick = 0;
+    history     = [];
+    showCount   = 20;
 
     document.getElementById('order-list').innerHTML = '';
     document.getElementById('btn-go').style.display = 'none';
@@ -348,8 +386,8 @@
 
   // ── Reveal ──
   let hatBusy = false;
-  window.drawNext = function() {
-    if (hatBusy || drawIndex >= teams.length) return;
+  window.drawNext = function () {
+    if (hatBusy || remaining.length === 0) return;
     hatBusy = true;
 
     const hat = document.getElementById('hat');
@@ -357,25 +395,30 @@
     setTimeout(() => hat.classList.remove('shake'), 560);
 
     setTimeout(() => {
-      const tIdx = shuffled[drawIndex];
+      // Pick randomly from remaining
+      const idx  = Math.floor(Math.random() * remaining.length);
+      const tIdx = remaining.splice(idx, 1)[0];
+      draftOrder.push(tIdx);
+
       const t    = teams[tIdx];
+      const pos  = drawIndex;
       const item = document.createElement('div');
       item.className = 'order-item';
       item.innerHTML = `
-        <div class="order-num" style="background:${t.color}">${drawIndex + 1}</div>
+        <div class="order-num" style="background:${t.color}">${pos + 1}</div>
         <div class="order-name">${t.name}</div>
-        <div class="order-badge">Picks ${SFXS[drawIndex]}</div>`;
+        <div class="order-badge">Picks ${SFXS[pos]}</div>`;
       document.getElementById('order-list').appendChild(item);
       requestAnimationFrame(() => requestAnimationFrame(() => item.classList.add('show')));
 
       drawIndex++;
       hatBusy = false;
 
-      if (drawIndex >= teams.length) {
+      if (remaining.length === 0) {
         document.getElementById('reveal-sub').textContent = 'Draft order set!';
         document.getElementById('btn-go').style.display  = 'block';
       } else {
-        const left = teams.length - drawIndex;
+        const left = remaining.length;
         document.getElementById('reveal-sub').textContent = `${left} name${left > 1 ? 's' : ''} left`;
       }
     }, 300);
@@ -393,7 +436,7 @@
   }
 
   function teamForPick(pickIdx) {
-    const n    = teams.length;
+    const n     = teams.length;
     const round = Math.floor(pickIdx / n);
     const pos   = pickIdx % n;
     return draftOrder[round % 2 === 0 ? pos : n - 1 - pos];
@@ -403,19 +446,10 @@
     renderTeamsBar();
     renderPickBar();
     renderPlayers();
-    // Update bottom button
-    const btn = document.getElementById('btn-bottom');
-    if (draftDone) {
-      btn.textContent = 'New Draft';
-      btn.className   = 'btn-bottom new';
-    } else {
-      btn.textContent = 'End Draft';
-      btn.className   = 'btn-bottom end';
-    }
   }
 
   function renderTeamsBar() {
-    const curTeam = draftDone ? -1 : teamForPick(currentPick);
+    const curTeam = teamForPick(currentPick);
     document.getElementById('teams-bar').innerHTML = teams.map((t, i) => {
       const isCur = i === curTeam;
       const picks = t.picks.map(rank => {
@@ -427,31 +461,28 @@
           <div class="tt-dot" style="background:${t.color}"></div>
           <div class="tt-name">${t.name}</div>
           <div class="tt-count">${t.picks.length}</div>
-        </div>
-        ${picks}
+        </div>${picks}
       </div>`;
     }).join('');
   }
 
   function renderPickBar() {
-    const bar = document.getElementById('pick-bar');
-    if (draftDone) { bar.style.display = 'none'; return; }
-    bar.style.display = '';
     const t = teams[teamForPick(currentPick)];
-    document.getElementById('pb-dot').style.background  = t.color;
-    document.getElementById('pb-name').textContent       = t.name;
-    document.getElementById('pb-pick').textContent       = currentPick + 1;
-    document.getElementById('pb-round').textContent      = Math.floor(currentPick / teams.length) + 1;
+    document.getElementById('pb-dot').style.background = t.color;
+    document.getElementById('pb-name').textContent      = t.name;
+    document.getElementById('pb-pick').textContent      = currentPick + 1;
+    document.getElementById('pb-round').textContent     = Math.floor(currentPick / teams.length) + 1;
+    document.getElementById('btn-back').disabled        = currentPick === 0;
   }
 
   function renderPlayers() {
     const avail   = PLAYERS.filter(p => available.includes(p.rank));
     const visible = avail.slice(0, showCount);
     const list    = document.getElementById('players-list');
+    list.style.pointerEvents = '';
 
-    // Build HTML then set — avoids any lingering :focus/:active states
     list.innerHTML = visible.map(p => `
-      <div class="player-card" data-rank="${p.rank}">
+      <div class="player-card" data-rank="${p.rank}" tabindex="-1">
         <div class="p-rank">#${p.rank}</div>
         <div class="p-info">
           <div class="p-name">${p.name}</div>
@@ -460,49 +491,91 @@
         <div class="p-ovr">${p.ovr}</div>
       </div>`).join('');
 
-    // Attach listeners fresh (no lingering state)
     list.querySelectorAll('.player-card').forEach(card => {
-      card.addEventListener('pointerup', () => {
-        if (!draftDone) pickPlayer(+card.dataset.rank);
-      });
+      card.addEventListener('click', () => pickPlayer(+card.dataset.rank));
     });
 
     const btn = document.getElementById('show-more');
     const rem = avail.length - showCount;
-    if (rem > 0) {
-      btn.style.display  = 'block';
-      btn.textContent    = `Show ${Math.min(20, rem)} More ↓`;
-    } else {
-      btn.style.display  = 'none';
-    }
-    if (draftDone) btn.style.display = 'none';
+    btn.style.display = rem > 0 ? 'block' : 'none';
+    if (rem > 0) btn.textContent = `Show ${Math.min(20, rem)} More ↓`;
   }
 
   function pickPlayer(rank) {
     const tIdx = teamForPick(currentPick);
     teams[tIdx].picks.push(rank);
     available = available.filter(r => r !== rank);
+    history.push({ tIdx, rank });
     currentPick++;
-    if (!available.length) draftDone = true;
+
+    // Block touches briefly so nothing gets pre-selected after tap
+    const list = document.getElementById('players-list');
+    list.style.pointerEvents = 'none';
     renderDraft();
+    setTimeout(() => { list.style.pointerEvents = ''; }, 400);
   }
+
+  window.undoPick = function () {
+    if (currentPick === 0) return;
+    const last = history.pop();
+    teams[last.tIdx].picks.pop();
+    available.push(last.rank);
+    available.sort((a, b) => a - b);
+    currentPick--;
+    // Ensure the undone player is visible
+    const pos = PLAYERS.findIndex(p => p.rank === last.rank);
+    if (pos >= showCount) showCount = pos + 1;
+    renderDraft();
+  };
 
   document.getElementById('show-more').addEventListener('click', () => {
     showCount += 20;
     renderPlayers();
   });
 
-  window.endOrReset = function() {
-    if (draftDone) {
-      // Reset
-      selected = new Set();
-      document.querySelectorAll('.player-toggle').forEach(b => b.classList.remove('on'));
-      document.getElementById('btn-start').disabled = true;
-      showScreen('screen-setup');
-    } else {
-      draftDone = true;
-      renderDraft();
-    }
+  window.endDraft = function () {
+    showSummary();
+  };
+
+  // ── Summary ──
+  function showSummary() {
+    const totalPicks = teams.reduce((s, t) => s + t.picks.length, 0);
+    document.getElementById('summary-sub').textContent =
+      `${totalPicks} total picks · ${teams.length} teams`;
+
+    document.getElementById('summary-teams').innerHTML = teams.map(t => {
+      const picks = t.picks.map((rank, i) => {
+        const p = PLAYERS.find(pl => pl.rank === rank);
+        return `<div class="sum-pick">
+          <span class="sum-pick-n">${i + 1}.</span>
+          <span class="sum-pick-name">${p.name}</span>
+          <span class="sum-pick-ovr">${p.ovr}</span>
+        </div>`;
+      }).join('') || '<div style="font-size:.75rem;color:var(--subtext);padding:4px 0">No picks</div>';
+      return `<div class="sum-team" style="--tc:${t.color}">
+        <div class="sum-team-name">${t.name}</div>
+        ${picks}
+      </div>`;
+    }).join('');
+
+    showScreen('screen-summary');
+  }
+
+  window.redraft = function () {
+    teams.forEach(t => t.picks = []);
+    available   = PLAYERS.map(p => p.rank);
+    currentPick = 0;
+    history     = [];
+    showCount   = 20;
+    showScreen('screen-draft');
+    renderDraft();
+  };
+
+  window.startOver = function () {
+    selected = new Set();
+    document.querySelectorAll('.player-toggle').forEach(b => b.classList.remove('on'));
+    document.getElementById('btn-start').disabled = true;
+    showScreen('screen-setup');
   };
 </script>
 </body>
