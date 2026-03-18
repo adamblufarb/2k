@@ -18,28 +18,13 @@
 
     /* ─── Setup ─── */
     .setup-wrap { max-width: 440px; margin: 0 auto; padding: 48px 20px; text-align: center; }
-    .app-title {
-      font-size: 3.2rem; font-weight: 900; letter-spacing: -3px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 4px;
-    }
+    .app-title { font-size: 3.2rem; font-weight: 900; letter-spacing: -3px; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 4px; }
     .app-sub { color: var(--subtext); font-size: 0.85rem; margin-bottom: 44px; }
     .sec-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
     .players-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 36px; }
-    .player-toggle {
-      padding: 14px 8px; background: var(--card); border: 2px solid var(--border);
-      border-radius: 14px; color: var(--subtext); font-size: 0.95rem; font-weight: 700;
-      cursor: pointer; transition: all 0.15s; font-family: inherit; touch-action: manipulation;
-    }
+    .player-toggle { padding: 14px 8px; background: var(--card); border: 2px solid var(--border); border-radius: 14px; color: var(--subtext); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.15s; font-family: inherit; touch-action: manipulation; }
     .player-toggle.on { border-color: var(--accent); color: var(--accent); background: rgba(247,166,0,0.1); }
-    .btn-primary {
-      width: 100%; padding: 16px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #000; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px;
-      cursor: pointer; font-family: inherit; transition: opacity 0.15s, transform 0.1s;
-      touch-action: manipulation;
-    }
+    .btn-primary { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #000; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px; cursor: pointer; font-family: inherit; transition: opacity 0.15s, transform 0.1s; touch-action: manipulation; }
     .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
     .btn-primary:not(:disabled):active { transform: scale(0.98); }
 
@@ -47,13 +32,7 @@
     .reveal-wrap { max-width: 440px; margin: 0 auto; padding: 40px 20px; text-align: center; }
     .reveal-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
     .reveal-sub { color: var(--subtext); font-size: 0.85rem; margin-bottom: 28px; min-height: 20px; }
-    .hat-btn {
-      background: none; border: none; cursor: pointer; font-size: 100px; line-height: 1;
-      display: block; margin: 40px auto 36px;
-      transform: scaleY(-1);
-      transition: transform 0.1s;
-      touch-action: manipulation; user-select: none;
-    }
+    .hat-btn { background: none; border: none; cursor: pointer; font-size: 100px; line-height: 1; display: block; margin: 48px auto 40px; transform: scaleY(-1); transition: transform 0.1s; touch-action: manipulation; user-select: none; }
     .hat-btn:active { transform: scaleY(-1) scale(0.93); }
     .hat-btn.shake { animation: hatShake 0.55s ease-in-out; }
     @keyframes hatShake {
@@ -65,12 +44,7 @@
       90%  { transform: scaleY(-1) rotate(-3deg); }
     }
     .order-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 300px; margin: 0 auto 28px; }
-    .order-item {
-      display: flex; align-items: center; gap: 12px; background: var(--card);
-      border-radius: 12px; padding: 13px 16px;
-      opacity: 0; transform: translateY(20px) scale(0.88);
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+    .order-item { display: flex; align-items: center; gap: 12px; background: var(--card); border-radius: 12px; padding: 13px 16px; opacity: 0; transform: translateY(20px) scale(0.88); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
     .order-item.show { opacity: 1; transform: none; }
     .order-num { width: 30px; height: 30px; border-radius: 50%; color: #000; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .order-name { font-weight: 700; font-size: 1rem; }
@@ -79,26 +53,7 @@
 
     /* ─── Draft ─── */
     .draft-wrap { max-width: 960px; margin: 0 auto; padding: 14px; }
-
-    .teams-bar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 14px; scrollbar-width: none; }
-    .teams-bar::-webkit-scrollbar { display: none; }
-    .team-tile {
-      flex-shrink: 0; min-width: 120px; background: var(--card); border-radius: var(--radius);
-      padding: 10px 12px; border: 2px solid transparent; transition: border-color 0.2s, background 0.2s;
-    }
-    .team-tile.cur { border-color: var(--tc); background: color-mix(in srgb, var(--tc) 10%, var(--card)); }
-    .tt-head { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
-    .tt-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-    .tt-name { font-size: 0.82rem; font-weight: 700; white-space: nowrap; }
-    .tt-count { font-size: 0.62rem; color: var(--subtext); margin-left: auto; }
-    .tt-pick { font-size: 0.72rem; color: var(--text); padding: 2px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .tt-pick-ovr { color: var(--accent); font-weight: 700; }
-    .tt-empty { font-size: 0.7rem; color: var(--subtext); font-style: italic; }
-
-    .pick-bar {
-      background: var(--card); border-radius: var(--radius); padding: 12px 16px;
-      margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    }
+    .pick-bar { background: var(--card); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     .pb-left { display: flex; align-items: center; gap: 10px; }
     .pb-dot { width: 11px; height: 11px; border-radius: 50%; animation: dotPulse 1.5s ease-in-out infinite; flex-shrink: 0; }
     @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.72)} }
@@ -107,69 +62,68 @@
     .pb-right { display: flex; align-items: center; gap: 8px; }
     .pb-badge { background: var(--card2); border-radius: 8px; padding: 5px 10px; font-size: 0.72rem; color: var(--subtext); white-space: nowrap; }
     .pb-badge strong { color: var(--text); }
-    .btn-back {
-      background: var(--card2); border: 1.5px solid var(--border); border-radius: 8px;
-      padding: 5px 10px; font-size: 0.72rem; font-weight: 600; color: var(--subtext);
-      cursor: pointer; font-family: inherit; touch-action: manipulation; white-space: nowrap;
-      transition: all 0.15s;
-    }
+    .btn-back { background: var(--card2); border: 1.5px solid var(--border); border-radius: 8px; padding: 5px 10px; font-size: 0.72rem; font-weight: 600; color: var(--subtext); cursor: pointer; font-family: inherit; touch-action: manipulation; white-space: nowrap; transition: all 0.15s; }
     .btn-back:hover { color: var(--text); border-color: var(--subtext); }
     .btn-back:disabled { opacity: 0.3; cursor: not-allowed; }
 
+    .draft-body { display: grid; grid-template-columns: 1fr 260px; gap: 14px; align-items: start; }
+    @media (max-width: 680px) { .draft-body { grid-template-columns: 1fr; } #teams-panel { order: -1; } }
+
+    /* Teams panel (stacked) */
+    .team-card { background: var(--card); border-radius: var(--radius); padding: 12px; margin-bottom: 10px; border: 2px solid transparent; transition: border-color 0.2s; }
+    .team-card.cur { border-color: var(--tc); }
+    .tc-head { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
+    .tc-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .tc-name { font-size: 0.82rem; font-weight: 700; }
+    .tc-order { margin-left: auto; font-size: 0.62rem; color: var(--subtext); }
+
+    .roster-slot { display: flex; align-items: center; gap: 7px; padding: 5px 6px; border-radius: 7px; margin-bottom: 3px; min-height: 30px; }
+    .roster-slot.filled { cursor: grab; }
+    .roster-slot.filled:active { cursor: grabbing; }
+    .roster-slot.drag-over { background: rgba(247,166,0,0.15); outline: 1.5px dashed var(--accent); }
+    .slot-pos { font-size: 0.6rem; font-weight: 700; color: var(--subtext); width: 32px; flex-shrink: 0; text-align: center; background: var(--card2); border-radius: 4px; padding: 2px 0; }
+    .slot-content { flex: 1; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
+    .slot-pname { font-size: 0.75rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .slot-povr { font-size: 0.7rem; font-weight: 700; color: var(--accent); flex-shrink: 0; margin-left: 4px; }
+    .slot-empty { font-size: 0.7rem; color: var(--subtext); font-style: italic; }
+    .drag-handle { font-size: 0.7rem; color: var(--subtext); cursor: grab; flex-shrink: 0; padding: 0 2px; touch-action: none; }
+
+    /* Players list */
     .section-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .player-card {
-      display: flex; align-items: center; gap: 11px; background: var(--card);
-      border-radius: 10px; padding: 10px 13px; margin-bottom: 7px;
-      cursor: pointer; border: 1.5px solid transparent; transition: border-color 0.12s, background 0.12s;
-      touch-action: manipulation; user-select: none; outline: none;
-    }
-    .player-card:hover { border-color: var(--accent); background: var(--card2); }
+    .player-card { display: flex; align-items: center; gap: 11px; background: var(--card); border-radius: 10px; padding: 10px 13px; margin-bottom: 7px; cursor: pointer; border: 1.5px solid transparent; transition: border-color 0.12s, background 0.12s; touch-action: manipulation; user-select: none; outline: none; }
+    @media (hover: hover) { .player-card:hover { border-color: var(--accent); background: var(--card2); } }
+    .player-card:active { opacity: 0.7; }
     .p-rank { width: 24px; font-size: 0.65rem; color: var(--subtext); font-weight: 600; text-align: center; flex-shrink: 0; }
     .p-info { flex: 1; min-width: 0; }
     .p-name { font-size: 0.87rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .p-team { font-size: 0.68rem; color: var(--subtext); }
+    .p-pos { font-size: 0.62rem; font-weight: 700; color: var(--subtext); background: var(--card2); border-radius: 4px; padding: 1px 5px; flex-shrink: 0; }
     .p-ovr { font-size: 0.98rem; font-weight: 800; color: var(--accent); flex-shrink: 0; }
-    .show-more {
-      width: 100%; padding: 11px; background: var(--card); border: 1.5px dashed var(--border);
-      border-radius: 10px; color: var(--subtext); font-size: 0.82rem; font-weight: 600;
-      cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation;
-    }
-    .show-more:hover { border-color: var(--accent); color: var(--accent); }
-    .btn-end {
-      width: 100%; margin-top: 16px; padding: 13px; background: transparent;
-      border: 1.5px solid var(--border); border-radius: 10px; color: var(--subtext);
-      font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit;
-      transition: all 0.15s; touch-action: manipulation;
-    }
-    .btn-end:hover { border-color: #ff453a; color: #ff453a; }
+    .show-more { width: 100%; padding: 11px; background: var(--card); border: 1.5px dashed var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; }
+    @media (hover: hover) { .show-more:hover { border-color: var(--accent); color: var(--accent); } }
+    .btn-end { width: 100%; margin-top: 16px; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; }
+    @media (hover: hover) { .btn-end:hover { border-color: #ff453a; color: #ff453a; } }
+
+    /* Drag ghost */
+    .drag-ghost { position: fixed; pointer-events: none; z-index: 999; background: var(--accent); color: #000; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; transform: translate(-50%, -50%); white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
 
     /* ─── Summary ─── */
-    .summary-wrap { max-width: 960px; margin: 0 auto; padding: 24px 14px; }
+    .summary-wrap { max-width: 680px; margin: 0 auto; padding: 24px 14px; }
     .summary-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 4px; text-align: center; }
     .summary-sub { color: var(--subtext); font-size: 0.82rem; text-align: center; margin-bottom: 24px; }
-    .summary-teams { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 24px; align-items: flex-start; scrollbar-width: none; }
-    .summary-teams::-webkit-scrollbar { display: none; }
-    .sum-team { flex-shrink: 0; min-width: 160px; background: var(--card); border-radius: var(--radius); padding: 14px; border-top: 3px solid var(--tc); }
-    .sum-team-name { font-size: 0.9rem; font-weight: 800; margin-bottom: 10px; }
-    .sum-pick { display: flex; align-items: baseline; gap: 6px; padding: 5px 0; border-bottom: 1px solid var(--border); }
-    .sum-pick:last-child { border-bottom: none; }
-    .sum-pick-n { font-size: 0.62rem; color: var(--subtext); flex-shrink: 0; width: 16px; }
-    .sum-pick-name { font-size: 0.8rem; font-weight: 600; flex: 1; }
-    .sum-pick-ovr { font-size: 0.75rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+    .sum-team { background: var(--card); border-radius: var(--radius); padding: 14px; margin-bottom: 12px; border-top: 3px solid var(--tc); }
+    .sum-team-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .sum-order-badge { font-size: 0.62rem; font-weight: 700; background: var(--card2); border-radius: 20px; padding: 2px 8px; color: var(--subtext); margin-left: auto; }
+    .sum-slot { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+    .sum-slot:last-child { border-bottom: none; }
+    .sum-slot-pos { font-size: 0.6rem; font-weight: 700; color: var(--subtext); background: var(--card2); border-radius: 4px; padding: 2px 5px; width: 36px; text-align: center; flex-shrink: 0; }
+    .sum-slot-name { flex: 1; font-weight: 600; }
+    .sum-slot-ovr { font-size: 0.75rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+    .sum-slot-empty { color: var(--subtext); font-style: italic; }
     .summary-actions { display: flex; flex-direction: column; gap: 10px; max-width: 440px; margin: 0 auto; }
-    .btn-redraft {
-      width: 100%; padding: 15px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #000; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px;
-      cursor: pointer; font-family: inherit; touch-action: manipulation;
-    }
-    .btn-startover {
-      width: 100%; padding: 13px; background: transparent;
-      border: 1.5px solid var(--border); border-radius: 14px; color: var(--subtext);
-      font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit;
-      touch-action: manipulation; transition: all 0.15s;
-    }
-    .btn-startover:hover { border-color: var(--subtext); color: var(--text); }
+    .btn-redraft { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #000; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px; cursor: pointer; font-family: inherit; touch-action: manipulation; }
+    .btn-startover { width: 100%; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 14px; color: var(--subtext); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; touch-action: manipulation; transition: all 0.15s; }
+    @media (hover: hover) { .btn-startover:hover { border-color: var(--subtext); color: var(--text); } }
   </style>
 </head>
 <body>
@@ -199,7 +153,6 @@
 <!-- Draft -->
 <div class="screen" id="screen-draft">
   <div class="draft-wrap">
-    <div class="teams-bar" id="teams-bar"></div>
     <div class="pick-bar" id="pick-bar">
       <div class="pb-left">
         <div class="pb-dot" id="pb-dot"></div>
@@ -213,19 +166,24 @@
         <div class="pb-badge">Pick <strong id="pb-pick">1</strong> · Round <strong id="pb-round">1</strong></div>
       </div>
     </div>
-    <div class="section-lbl">Available Players</div>
-    <div id="players-list"></div>
-    <button class="show-more" id="show-more">Show 20 More ↓</button>
-    <button class="btn-end" id="btn-end" onclick="endDraft()">End Draft</button>
+    <div class="draft-body">
+      <div id="players-panel">
+        <div class="section-lbl">Available Players</div>
+        <div id="players-list"></div>
+        <button class="show-more" id="show-more">Show 20 More ↓</button>
+        <button class="btn-end" onclick="endDraft()">End Draft</button>
+      </div>
+      <div id="teams-panel"></div>
+    </div>
   </div>
 </div>
 
 <!-- Summary -->
 <div class="screen" id="screen-summary">
   <div class="summary-wrap">
-    <div class="summary-title">🏆 Draft Summary</div>
+    <div class="summary-title">🏆 Draft Complete</div>
     <div class="summary-sub" id="summary-sub"></div>
-    <div class="summary-teams" id="summary-teams"></div>
+    <div id="summary-teams"></div>
     <div class="summary-actions">
       <button class="btn-redraft" onclick="redraft()">Re-draft (Same Order)</button>
       <button class="btn-startover" onclick="startOver()">Start Over</button>
@@ -237,120 +195,145 @@
   const NAMES  = ['Brown','Dor','Yuval','Adam','Uri','Guest'];
   const COLORS = ['#f7a600','#34c759','#0a84ff','#ff453a','#bf5af2','#30d158'];
   const SFXS   = ['1st','2nd','3rd','4th','5th','6th'];
+  const SLOTS  = ['PG','SG','SF','PF','C','B1','B2'];
+  const SLOT_LBL = {PG:'PG',SG:'SG',SF:'SF',PF:'PF',C:'C',B1:'Bench',B2:'Bench'};
+  const MAX_PER_TEAM = 7;
 
   const PLAYERS = [
-    {rank:1,  name:"Nikola Jokić",            team:"Denver Nuggets",         ovr:98},
-    {rank:2,  name:"Shai Gilgeous-Alexander",  team:"Oklahoma City Thunder",  ovr:98},
-    {rank:3,  name:"Giannis Antetokounmpo",    team:"Milwaukee Bucks",        ovr:97},
-    {rank:4,  name:"Luka Dončić",              team:"Los Angeles Lakers",     ovr:95},
-    {rank:5,  name:"Anthony Edwards",          team:"Minnesota Timberwolves", ovr:95},
-    {rank:6,  name:"Stephen Curry",            team:"Golden State Warriors",  ovr:94},
-    {rank:7,  name:"LeBron James",             team:"Los Angeles Lakers",     ovr:94},
-    {rank:8,  name:"Jayson Tatum",             team:"Boston Celtics",         ovr:94},
-    {rank:9,  name:"Victor Wembanyama",        team:"San Antonio Spurs",      ovr:94},
-    {rank:10, name:"Kevin Durant",             team:"Houston Rockets",        ovr:93},
-    {rank:11, name:"Donovan Mitchell",         team:"Cleveland Cavaliers",    ovr:93},
-    {rank:12, name:"Anthony Davis",            team:"Dallas Mavericks",       ovr:93},
-    {rank:13, name:"Jalen Brunson",            team:"New York Knicks",        ovr:93},
-    {rank:14, name:"Tyrese Haliburton",        team:"Indiana Pacers",         ovr:93},
-    {rank:15, name:"Kawhi Leonard",            team:"Los Angeles Clippers",   ovr:92},
-    {rank:16, name:"Cade Cunningham",          team:"Detroit Pistons",        ovr:92},
-    {rank:17, name:"Joel Embiid",              team:"Philadelphia 76ers",     ovr:92},
-    {rank:18, name:"Karl-Anthony Towns",       team:"New York Knicks",        ovr:92},
-    {rank:19, name:"Ja Morant",                team:"Memphis Grizzlies",      ovr:91},
-    {rank:20, name:"Devin Booker",             team:"Phoenix Suns",           ovr:91},
-    {rank:21, name:"Jalen Williams",           team:"Oklahoma City Thunder",  ovr:90},
-    {rank:22, name:"Jaylen Brown",             team:"Boston Celtics",         ovr:90},
-    {rank:23, name:"Trae Young",               team:"Atlanta Hawks",          ovr:90},
-    {rank:24, name:"Kyrie Irving",             team:"Dallas Mavericks",       ovr:90},
-    {rank:25, name:"Paolo Banchero",           team:"Orlando Magic",          ovr:89},
-    {rank:26, name:"Evan Mobley",              team:"Cleveland Cavaliers",    ovr:89},
-    {rank:27, name:"Pascal Siakam",            team:"Indiana Pacers",         ovr:89},
-    {rank:28, name:"James Harden",             team:"Los Angeles Clippers",   ovr:89},
-    {rank:29, name:"Jaren Jackson Jr.",        team:"Memphis Grizzlies",      ovr:89},
-    {rank:30, name:"Bam Adebayo",              team:"Miami Heat",             ovr:88},
-    {rank:31, name:"Chet Holmgren",            team:"Oklahoma City Thunder",  ovr:88},
-    {rank:32, name:"Damian Lillard",           team:"Portland Trail Blazers", ovr:88},
-    {rank:33, name:"Domantas Sabonis",         team:"Sacramento Kings",       ovr:87},
-    {rank:34, name:"Alperen Şengün",           team:"Houston Rockets",        ovr:87},
-    {rank:35, name:"LaMelo Ball",              team:"Charlotte Hornets",      ovr:87},
-    {rank:36, name:"Darius Garland",           team:"Cleveland Cavaliers",    ovr:87},
-    {rank:37, name:"Zion Williamson",          team:"New Orleans Pelicans",   ovr:87},
-    {rank:38, name:"Ivica Zubac",              team:"Los Angeles Clippers",   ovr:87},
-    {rank:39, name:"Derrick White",            team:"Boston Celtics",         ovr:87},
-    {rank:40, name:"Jimmy Butler",             team:"Golden State Warriors",  ovr:87},
-    {rank:41, name:"Amen Thompson",            team:"Houston Rockets",        ovr:87},
-    {rank:42, name:"Tyler Herro",              team:"Miami Heat",             ovr:86},
-    {rank:43, name:"Tyrese Maxey",             team:"Philadelphia 76ers",     ovr:86},
-    {rank:44, name:"Jamal Murray",             team:"Denver Nuggets",         ovr:86},
-    {rank:45, name:"Franz Wagner",             team:"Orlando Magic",          ovr:86},
-    {rank:46, name:"Julius Randle",            team:"Minnesota Timberwolves", ovr:86},
-    {rank:47, name:"Zach LaVine",              team:"Sacramento Kings",       ovr:85},
-    {rank:48, name:"De'Aaron Fox",             team:"San Antonio Spurs",      ovr:85},
-    {rank:49, name:"Austin Reaves",            team:"Los Angeles Lakers",     ovr:85},
-    {rank:50, name:"DeMar DeRozan",            team:"Sacramento Kings",       ovr:85},
-    {rank:51, name:"Scottie Barnes",           team:"Toronto Raptors",        ovr:85},
-    {rank:52, name:"OG Anunoby",               team:"New York Knicks",        ovr:85},
-    {rank:53, name:"Kristaps Porzingis",       team:"Atlanta Hawks",          ovr:85},
-    {rank:54, name:"Lauri Markkanen",          team:"Utah Jazz",              ovr:84},
-    {rank:55, name:"Brandon Ingram",           team:"Toronto Raptors",        ovr:84},
-    {rank:56, name:"Mikal Bridges",            team:"New York Knicks",        ovr:84},
-    {rank:57, name:"Rudy Gobert",              team:"Minnesota Timberwolves", ovr:84},
-    {rank:58, name:"Norman Powell",            team:"Miami Heat",             ovr:84},
-    {rank:59, name:"Jarrett Allen",            team:"Cleveland Cavaliers",    ovr:84},
-    {rank:60, name:"Desmond Bane",             team:"Orlando Magic",          ovr:83},
-    {rank:61, name:"Jalen Green",              team:"Phoenix Suns",           ovr:83},
-    {rank:62, name:"Myles Turner",             team:"Milwaukee Bucks",        ovr:83},
-    {rank:63, name:"Cameron Johnson",          team:"Denver Nuggets",         ovr:83},
-    {rank:64, name:"Dyson Daniels",            team:"Atlanta Hawks",          ovr:83},
-    {rank:65, name:"Coby White",               team:"Chicago Bulls",          ovr:83},
-    {rank:66, name:"Stephon Castle",           team:"San Antonio Spurs",      ovr:82},
-    {rank:67, name:"Michael Porter Jr.",       team:"Brooklyn Nets",          ovr:82},
-    {rank:68, name:"R.J. Barrett",             team:"Toronto Raptors",        ovr:82},
-    {rank:69, name:"Josh Giddey",              team:"Chicago Bulls",          ovr:82},
-    {rank:70, name:"John Collins",             team:"Los Angeles Clippers",   ovr:82},
-    {rank:71, name:"Aaron Gordon",             team:"Denver Nuggets",         ovr:82},
-    {rank:72, name:"Brandon Miller",           team:"Charlotte Hornets",      ovr:82},
-    {rank:73, name:"Deni Avdija",              team:"Portland Trail Blazers", ovr:82},
-    {rank:74, name:"Naz Reid",                 team:"Minnesota Timberwolves", ovr:82},
-    {rank:75, name:"Nikola Vucevic",           team:"Chicago Bulls",          ovr:82},
-    {rank:76, name:"Jalen Duren",              team:"Detroit Pistons",        ovr:82},
-    {rank:77, name:"Jalen Suggs",              team:"Orlando Magic",          ovr:82},
-    {rank:78, name:"Trey Murphy III",          team:"New Orleans Pelicans",   ovr:82},
-    {rank:79, name:"Cooper Flagg",             team:"Dallas Mavericks",       ovr:82},
-    {rank:80, name:"Isaiah Hartenstein",       team:"Oklahoma City Thunder",  ovr:82},
-    {rank:81, name:"Jaden McDaniels",          team:"Minnesota Timberwolves", ovr:82},
-    {rank:82, name:"Toumani Camara",           team:"Portland Trail Blazers", ovr:82},
-    {rank:83, name:"Walker Kessler",           team:"Utah Jazz",              ovr:82},
-    {rank:84, name:"Luguentz Dort",            team:"Oklahoma City Thunder",  ovr:81},
-    {rank:85, name:"Herbert Jones",            team:"New Orleans Pelicans",   ovr:81},
-    {rank:86, name:"Jrue Holiday",             team:"Portland Trail Blazers", ovr:81},
-    {rank:87, name:"Dejounte Murray",          team:"New Orleans Pelicans",   ovr:81},
-    {rank:88, name:"C.J. McCollum",            team:"Washington Wizards",     ovr:81},
-    {rank:89, name:"Anfernee Simons",          team:"Boston Celtics",         ovr:81},
-    {rank:90, name:"Draymond Green",           team:"Golden State Warriors",  ovr:81},
-    {rank:91, name:"Josh Hart",                team:"New York Knicks",        ovr:81},
-    {rank:92, name:"Paul George",              team:"Philadelphia 76ers",     ovr:81},
-    {rank:93, name:"Onyeka Okongwu",           team:"Atlanta Hawks",          ovr:81},
-    {rank:94, name:"Immanuel Quickley",        team:"Toronto Raptors",        ovr:81},
-    {rank:95, name:"Andrew Nembhard",          team:"Indiana Pacers",         ovr:81},
-    {rank:96, name:"Jalen Johnson",            team:"Atlanta Hawks",          ovr:81},
-    {rank:97, name:"Alexandre Sarr",           team:"Washington Wizards",     ovr:81},
-    {rank:98, name:"Aaron Nesmith",            team:"Indiana Pacers",         ovr:81},
-    {rank:99, name:"Shaedon Sharpe",           team:"Portland Trail Blazers", ovr:81},
-    {rank:100,name:"Bobby Portis Jr.",         team:"Milwaukee Bucks",        ovr:81},
+    {rank:1,  name:"Nikola Jokić",            team:"Denver Nuggets",         ovr:98, pos:'C'},
+    {rank:2,  name:"Shai Gilgeous-Alexander",  team:"Oklahoma City Thunder",  ovr:98, pos:'PG'},
+    {rank:3,  name:"Giannis Antetokounmpo",    team:"Milwaukee Bucks",        ovr:97, pos:'PF'},
+    {rank:4,  name:"Luka Dončić",              team:"Los Angeles Lakers",     ovr:95, pos:'PG'},
+    {rank:5,  name:"Anthony Edwards",          team:"Minnesota Timberwolves", ovr:95, pos:'SG'},
+    {rank:6,  name:"Stephen Curry",            team:"Golden State Warriors",  ovr:94, pos:'PG'},
+    {rank:7,  name:"LeBron James",             team:"Los Angeles Lakers",     ovr:94, pos:'SF'},
+    {rank:8,  name:"Jayson Tatum",             team:"Boston Celtics",         ovr:94, pos:'SF'},
+    {rank:9,  name:"Victor Wembanyama",        team:"San Antonio Spurs",      ovr:94, pos:'C'},
+    {rank:10, name:"Kevin Durant",             team:"Houston Rockets",        ovr:93, pos:'SF'},
+    {rank:11, name:"Donovan Mitchell",         team:"Cleveland Cavaliers",    ovr:93, pos:'SG'},
+    {rank:12, name:"Anthony Davis",            team:"Dallas Mavericks",       ovr:93, pos:'PF'},
+    {rank:13, name:"Jalen Brunson",            team:"New York Knicks",        ovr:93, pos:'PG'},
+    {rank:14, name:"Tyrese Haliburton",        team:"Indiana Pacers",         ovr:93, pos:'PG'},
+    {rank:15, name:"Kawhi Leonard",            team:"Los Angeles Clippers",   ovr:92, pos:'SF'},
+    {rank:16, name:"Cade Cunningham",          team:"Detroit Pistons",        ovr:92, pos:'PG'},
+    {rank:17, name:"Joel Embiid",              team:"Philadelphia 76ers",     ovr:92, pos:'C'},
+    {rank:18, name:"Karl-Anthony Towns",       team:"New York Knicks",        ovr:92, pos:'C'},
+    {rank:19, name:"Ja Morant",                team:"Memphis Grizzlies",      ovr:91, pos:'PG'},
+    {rank:20, name:"Devin Booker",             team:"Phoenix Suns",           ovr:91, pos:'SG'},
+    {rank:21, name:"Jalen Williams",           team:"Oklahoma City Thunder",  ovr:90, pos:'SG'},
+    {rank:22, name:"Jaylen Brown",             team:"Boston Celtics",         ovr:90, pos:'SG'},
+    {rank:23, name:"Trae Young",               team:"Atlanta Hawks",          ovr:90, pos:'PG'},
+    {rank:24, name:"Kyrie Irving",             team:"Dallas Mavericks",       ovr:90, pos:'PG'},
+    {rank:25, name:"Paolo Banchero",           team:"Orlando Magic",          ovr:89, pos:'PF'},
+    {rank:26, name:"Evan Mobley",              team:"Cleveland Cavaliers",    ovr:89, pos:'PF'},
+    {rank:27, name:"Pascal Siakam",            team:"Indiana Pacers",         ovr:89, pos:'PF'},
+    {rank:28, name:"James Harden",             team:"Los Angeles Clippers",   ovr:89, pos:'PG'},
+    {rank:29, name:"Jaren Jackson Jr.",        team:"Memphis Grizzlies",      ovr:89, pos:'PF'},
+    {rank:30, name:"Bam Adebayo",              team:"Miami Heat",             ovr:88, pos:'C'},
+    {rank:31, name:"Chet Holmgren",            team:"Oklahoma City Thunder",  ovr:88, pos:'C'},
+    {rank:32, name:"Damian Lillard",           team:"Portland Trail Blazers", ovr:88, pos:'PG'},
+    {rank:33, name:"Domantas Sabonis",         team:"Sacramento Kings",       ovr:87, pos:'C'},
+    {rank:34, name:"Alperen Şengün",           team:"Houston Rockets",        ovr:87, pos:'C'},
+    {rank:35, name:"LaMelo Ball",              team:"Charlotte Hornets",      ovr:87, pos:'PG'},
+    {rank:36, name:"Darius Garland",           team:"Cleveland Cavaliers",    ovr:87, pos:'PG'},
+    {rank:37, name:"Zion Williamson",          team:"New Orleans Pelicans",   ovr:87, pos:'PF'},
+    {rank:38, name:"Ivica Zubac",              team:"Los Angeles Clippers",   ovr:87, pos:'C'},
+    {rank:39, name:"Derrick White",            team:"Boston Celtics",         ovr:87, pos:'SG'},
+    {rank:40, name:"Jimmy Butler",             team:"Golden State Warriors",  ovr:87, pos:'SF'},
+    {rank:41, name:"Amen Thompson",            team:"Houston Rockets",        ovr:87, pos:'SF'},
+    {rank:42, name:"Tyler Herro",              team:"Miami Heat",             ovr:86, pos:'SG'},
+    {rank:43, name:"Tyrese Maxey",             team:"Philadelphia 76ers",     ovr:86, pos:'PG'},
+    {rank:44, name:"Jamal Murray",             team:"Denver Nuggets",         ovr:86, pos:'PG'},
+    {rank:45, name:"Franz Wagner",             team:"Orlando Magic",          ovr:86, pos:'SF'},
+    {rank:46, name:"Julius Randle",            team:"Minnesota Timberwolves", ovr:86, pos:'PF'},
+    {rank:47, name:"Zach LaVine",              team:"Sacramento Kings",       ovr:85, pos:'SG'},
+    {rank:48, name:"De'Aaron Fox",             team:"San Antonio Spurs",      ovr:85, pos:'PG'},
+    {rank:49, name:"Austin Reaves",            team:"Los Angeles Lakers",     ovr:85, pos:'SG'},
+    {rank:50, name:"DeMar DeRozan",            team:"Sacramento Kings",       ovr:85, pos:'SF'},
+    {rank:51, name:"Scottie Barnes",           team:"Toronto Raptors",        ovr:85, pos:'SF'},
+    {rank:52, name:"OG Anunoby",               team:"New York Knicks",        ovr:85, pos:'SF'},
+    {rank:53, name:"Kristaps Porzingis",       team:"Atlanta Hawks",          ovr:85, pos:'C'},
+    {rank:54, name:"Lauri Markkanen",          team:"Utah Jazz",              ovr:84, pos:'PF'},
+    {rank:55, name:"Brandon Ingram",           team:"Toronto Raptors",        ovr:84, pos:'SF'},
+    {rank:56, name:"Mikal Bridges",            team:"New York Knicks",        ovr:84, pos:'SF'},
+    {rank:57, name:"Rudy Gobert",              team:"Minnesota Timberwolves", ovr:84, pos:'C'},
+    {rank:58, name:"Norman Powell",            team:"Miami Heat",             ovr:84, pos:'SG'},
+    {rank:59, name:"Jarrett Allen",            team:"Cleveland Cavaliers",    ovr:84, pos:'C'},
+    {rank:60, name:"Desmond Bane",             team:"Orlando Magic",          ovr:83, pos:'SG'},
+    {rank:61, name:"Jalen Green",              team:"Phoenix Suns",           ovr:83, pos:'SG'},
+    {rank:62, name:"Myles Turner",             team:"Milwaukee Bucks",        ovr:83, pos:'C'},
+    {rank:63, name:"Cameron Johnson",          team:"Denver Nuggets",         ovr:83, pos:'SF'},
+    {rank:64, name:"Dyson Daniels",            team:"Atlanta Hawks",          ovr:83, pos:'SG'},
+    {rank:65, name:"Coby White",               team:"Chicago Bulls",          ovr:83, pos:'PG'},
+    {rank:66, name:"Stephon Castle",           team:"San Antonio Spurs",      ovr:82, pos:'PG'},
+    {rank:67, name:"Michael Porter Jr.",       team:"Brooklyn Nets",          ovr:82, pos:'SF'},
+    {rank:68, name:"R.J. Barrett",             team:"Toronto Raptors",        ovr:82, pos:'SF'},
+    {rank:69, name:"Josh Giddey",              team:"Chicago Bulls",          ovr:82, pos:'PG'},
+    {rank:70, name:"John Collins",             team:"Los Angeles Clippers",   ovr:82, pos:'PF'},
+    {rank:71, name:"Aaron Gordon",             team:"Denver Nuggets",         ovr:82, pos:'PF'},
+    {rank:72, name:"Brandon Miller",           team:"Charlotte Hornets",      ovr:82, pos:'SG'},
+    {rank:73, name:"Deni Avdija",              team:"Portland Trail Blazers", ovr:82, pos:'SF'},
+    {rank:74, name:"Naz Reid",                 team:"Minnesota Timberwolves", ovr:82, pos:'PF'},
+    {rank:75, name:"Nikola Vucevic",           team:"Chicago Bulls",          ovr:82, pos:'C'},
+    {rank:76, name:"Jalen Duren",              team:"Detroit Pistons",        ovr:82, pos:'C'},
+    {rank:77, name:"Jalen Suggs",              team:"Orlando Magic",          ovr:82, pos:'PG'},
+    {rank:78, name:"Trey Murphy III",          team:"New Orleans Pelicans",   ovr:82, pos:'SF'},
+    {rank:79, name:"Cooper Flagg",             team:"Dallas Mavericks",       ovr:82, pos:'SF'},
+    {rank:80, name:"Isaiah Hartenstein",       team:"Oklahoma City Thunder",  ovr:82, pos:'C'},
+    {rank:81, name:"Jaden McDaniels",          team:"Minnesota Timberwolves", ovr:82, pos:'SF'},
+    {rank:82, name:"Toumani Camara",           team:"Portland Trail Blazers", ovr:82, pos:'SF'},
+    {rank:83, name:"Walker Kessler",           team:"Utah Jazz",              ovr:82, pos:'C'},
+    {rank:84, name:"Luguentz Dort",            team:"Oklahoma City Thunder",  ovr:81, pos:'SG'},
+    {rank:85, name:"Herbert Jones",            team:"New Orleans Pelicans",   ovr:81, pos:'SF'},
+    {rank:86, name:"Jrue Holiday",             team:"Portland Trail Blazers", ovr:81, pos:'PG'},
+    {rank:87, name:"Dejounte Murray",          team:"New Orleans Pelicans",   ovr:81, pos:'PG'},
+    {rank:88, name:"C.J. McCollum",            team:"Washington Wizards",     ovr:81, pos:'SG'},
+    {rank:89, name:"Anfernee Simons",          team:"Boston Celtics",         ovr:81, pos:'SG'},
+    {rank:90, name:"Draymond Green",           team:"Golden State Warriors",  ovr:81, pos:'PF'},
+    {rank:91, name:"Josh Hart",                team:"New York Knicks",        ovr:81, pos:'SF'},
+    {rank:92, name:"Paul George",              team:"Philadelphia 76ers",     ovr:81, pos:'SF'},
+    {rank:93, name:"Onyeka Okongwu",           team:"Atlanta Hawks",          ovr:81, pos:'C'},
+    {rank:94, name:"Immanuel Quickley",        team:"Toronto Raptors",        ovr:81, pos:'PG'},
+    {rank:95, name:"Andrew Nembhard",          team:"Indiana Pacers",         ovr:81, pos:'PG'},
+    {rank:96, name:"Jalen Johnson",            team:"Atlanta Hawks",          ovr:81, pos:'SF'},
+    {rank:97, name:"Alexandre Sarr",           team:"Washington Wizards",     ovr:81, pos:'C'},
+    {rank:98, name:"Aaron Nesmith",            team:"Indiana Pacers",         ovr:81, pos:'SF'},
+    {rank:99, name:"Shaedon Sharpe",           team:"Portland Trail Blazers", ovr:81, pos:'SG'},
+    {rank:100,name:"Bobby Portis Jr.",         team:"Milwaukee Bucks",        ovr:81, pos:'PF'},
   ];
 
   // ── State ──
   let selected    = new Set();
   let teams       = [];
   let draftOrder  = [];
-  let remaining   = [];   // team indices not yet drawn from hat
+  let remaining   = [];
   let drawIndex   = 0;
   let currentPick = 0;
   let available   = [];
-  let history     = [];   // [{teamIdx, rank}]
+  let history     = []; // [{tIdx, slot, rank}]
   let showCount   = 20;
+
+  function emptyRoster() { return {PG:null,SG:null,SF:null,PF:null,C:null,B1:null,B2:null}; }
+
+  function pickCount(tIdx) {
+    return Object.values(teams[tIdx].roster).filter(v => v !== null).length;
+  }
+
+  function autoSlot(tIdx, rank) {
+    const pos = PLAYERS.find(p => p.rank === rank).pos;
+    const r   = teams[tIdx].roster;
+    if (r[pos] === null)  return pos;
+    if (r['B1'] === null) return 'B1';
+    if (r['B2'] === null) return 'B2';
+    return null;
+  }
+
+  function teamForPick(pickIdx) {
+    const n     = teams.length;
+    const round = Math.floor(pickIdx / n);
+    const pos   = pickIdx % n;
+    return draftOrder[round % 2 === 0 ? pos : n - 1 - pos];
+  }
 
   // ── Setup ──
   const grid = document.getElementById('players-grid');
@@ -367,13 +350,12 @@
   });
 
   document.getElementById('btn-start').addEventListener('click', () => {
-    const sel = [...selected].sort((a, b) => a - b);
-    teams = sel.map(i => ({ name: NAMES[i], color: COLORS[i], picks: [] }));
-    // remaining = all team indices, to be drawn randomly from hat
+    const sel = [...selected].sort((a,b) => a - b);
+    teams     = sel.map(i => ({ name: NAMES[i], color: COLORS[i], roster: emptyRoster() }));
     remaining = Array.from({length: teams.length}, (_, i) => i);
-    draftOrder = [];
-    drawIndex  = 0;
-    available  = PLAYERS.map(p => p.rank);
+    draftOrder  = [];
+    drawIndex   = 0;
+    available   = PLAYERS.map(p => p.rank);
     currentPick = 0;
     history     = [];
     showCount   = 20;
@@ -386,41 +368,36 @@
 
   // ── Reveal ──
   let hatBusy = false;
-  window.drawNext = function () {
+
+  window.drawNext = function() {
     if (hatBusy || remaining.length === 0) return;
     hatBusy = true;
-
     const hat = document.getElementById('hat');
     hat.classList.add('shake');
     setTimeout(() => hat.classList.remove('shake'), 560);
 
     setTimeout(() => {
-      // Pick randomly from remaining
+      // Truly random: pick from whatever's left
       const idx  = Math.floor(Math.random() * remaining.length);
       const tIdx = remaining.splice(idx, 1)[0];
       draftOrder.push(tIdx);
 
-      const t    = teams[tIdx];
-      const pos  = drawIndex;
+      const t = teams[tIdx];
       const item = document.createElement('div');
       item.className = 'order-item';
       item.innerHTML = `
-        <div class="order-num" style="background:${t.color}">${pos + 1}</div>
+        <div class="order-num" style="background:${t.color}">${drawIndex + 1}</div>
         <div class="order-name">${t.name}</div>
-        <div class="order-badge">Picks ${SFXS[pos]}</div>`;
+        <div class="order-badge">Picks ${SFXS[drawIndex]}</div>`;
       document.getElementById('order-list').appendChild(item);
       requestAnimationFrame(() => requestAnimationFrame(() => item.classList.add('show')));
-
       drawIndex++;
       hatBusy = false;
 
-      if (remaining.length === 0) {
-        document.getElementById('reveal-sub').textContent = 'Draft order set!';
-        document.getElementById('btn-go').style.display  = 'block';
-      } else {
-        const left = remaining.length;
-        document.getElementById('reveal-sub').textContent = `${left} name${left > 1 ? 's' : ''} left`;
-      }
+      const left = remaining.length;
+      document.getElementById('reveal-sub').textContent =
+        left === 0 ? 'Order set!' : `${left} name${left > 1 ? 's' : ''} left`;
+      if (left === 0) document.getElementById('btn-go').style.display = 'block';
     }, 300);
   };
 
@@ -429,41 +406,80 @@
     renderDraft();
   });
 
+  // ── Drag/drop state ──
+  let drag = null;
+
+  function startDrag(e, tIdx, slot) {
+    const rank = teams[tIdx].roster[slot];
+    if (rank === null) return;
+    e.preventDefault();
+
+    const p     = PLAYERS.find(pl => pl.rank === rank);
+    const ghost = document.createElement('div');
+    ghost.className   = 'drag-ghost';
+    ghost.textContent = p.name;
+    ghost.style.left  = e.clientX + 'px';
+    ghost.style.top   = e.clientY + 'px';
+    document.body.appendChild(ghost);
+
+    drag = { tIdx, slot, rank, ghost };
+
+    // Mark source as dragging (visually empty)
+    const srcEl = document.querySelector(`[data-tidx="${tIdx}"][data-slot="${slot}"]`);
+    if (srcEl) srcEl.style.opacity = '0.3';
+
+    document.addEventListener('pointermove', onDragMove, {passive: false});
+    document.addEventListener('pointerup',   onDragEnd);
+  }
+
+  function onDragMove(e) {
+    if (!drag) return;
+    e.preventDefault();
+    drag.ghost.style.left = e.clientX + 'px';
+    drag.ghost.style.top  = e.clientY + 'px';
+    // Highlight drop target
+    document.querySelectorAll('.roster-slot').forEach(el => el.classList.remove('drag-over'));
+    const el = document.elementFromPoint(e.clientX, e.clientY)?.closest('[data-slot]');
+    if (el) el.classList.add('drag-over');
+  }
+
+  function onDragEnd(e) {
+    if (!drag) return;
+    document.querySelectorAll('.roster-slot').forEach(el => el.classList.remove('drag-over'));
+
+    const target = document.elementFromPoint(e.clientX, e.clientY)?.closest('[data-slot]');
+    if (target) {
+      const dstTIdx = +target.dataset.tidx;
+      const dstSlot = target.dataset.slot;
+      if (!(dstTIdx === drag.tIdx && dstSlot === drag.slot)) {
+        // Swap
+        const dstRank = teams[dstTIdx].roster[dstSlot];
+        teams[dstTIdx].roster[dstSlot]  = drag.rank;
+        teams[drag.tIdx].roster[drag.slot] = dstRank;
+        renderTeamsPanel();
+      }
+    }
+
+    // Restore opacity of source
+    const srcEl = document.querySelector(`[data-tidx="${drag.tIdx}"][data-slot="${drag.slot}"]`);
+    if (srcEl) srcEl.style.opacity = '';
+
+    drag.ghost.remove();
+    drag = null;
+    document.removeEventListener('pointermove', onDragMove);
+    document.removeEventListener('pointerup',   onDragEnd);
+  }
+
   // ── Draft ──
   function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 
-  function teamForPick(pickIdx) {
-    const n     = teams.length;
-    const round = Math.floor(pickIdx / n);
-    const pos   = pickIdx % n;
-    return draftOrder[round % 2 === 0 ? pos : n - 1 - pos];
-  }
-
   function renderDraft() {
-    renderTeamsBar();
     renderPickBar();
+    renderTeamsPanel();
     renderPlayers();
-  }
-
-  function renderTeamsBar() {
-    const curTeam = teamForPick(currentPick);
-    document.getElementById('teams-bar').innerHTML = teams.map((t, i) => {
-      const isCur = i === curTeam;
-      const picks = t.picks.map(rank => {
-        const p = PLAYERS.find(pl => pl.rank === rank);
-        return `<div class="tt-pick">${p.name} <span class="tt-pick-ovr">${p.ovr}</span></div>`;
-      }).join('') || '<div class="tt-empty">No picks</div>';
-      return `<div class="team-tile ${isCur ? 'cur' : ''}" style="--tc:${t.color}">
-        <div class="tt-head">
-          <div class="tt-dot" style="background:${t.color}"></div>
-          <div class="tt-name">${t.name}</div>
-          <div class="tt-count">${t.picks.length}</div>
-        </div>${picks}
-      </div>`;
-    }).join('');
   }
 
   function renderPickBar() {
@@ -473,6 +489,48 @@
     document.getElementById('pb-pick').textContent      = currentPick + 1;
     document.getElementById('pb-round').textContent     = Math.floor(currentPick / teams.length) + 1;
     document.getElementById('btn-back').disabled        = currentPick === 0;
+  }
+
+  function renderTeamsPanel() {
+    const curTeam = teamForPick(currentPick);
+    const panel   = document.getElementById('teams-panel');
+
+    panel.innerHTML = draftOrder.map((tIdx, orderPos) => {
+      const t    = teams[tIdx];
+      const isCur = tIdx === curTeam;
+      const slots = SLOTS.map(slot => {
+        const rank = t.roster[slot];
+        const p    = rank !== null ? PLAYERS.find(pl => pl.rank === rank) : null;
+        const filled = p !== null;
+        return `<div class="roster-slot ${filled ? 'filled' : ''}"
+                     data-tidx="${tIdx}" data-slot="${slot}"
+                     ${filled ? `style="touch-action:none"` : ''}>
+          <span class="slot-pos">${SLOT_LBL[slot]}</span>
+          <span class="slot-content">
+            ${filled
+              ? `<span class="slot-pname">${p.name}</span><span class="slot-povr">${p.ovr}</span>`
+              : `<span class="slot-empty">—</span>`
+            }
+          </span>
+        </div>`;
+      }).join('');
+
+      return `<div class="team-card ${isCur ? 'cur' : ''}" style="--tc:${t.color}">
+        <div class="tc-head">
+          <div class="tc-dot" style="background:${t.color}"></div>
+          <div class="tc-name">${t.name}</div>
+          <div class="tc-order">${SFXS[orderPos]} pick</div>
+        </div>
+        ${slots}
+      </div>`;
+    }).join('');
+
+    // Attach drag listeners to filled slots
+    panel.querySelectorAll('.roster-slot.filled').forEach(el => {
+      el.addEventListener('pointerdown', (e) => {
+        startDrag(e, +el.dataset.tidx, el.dataset.slot);
+      });
+    });
   }
 
   function renderPlayers() {
@@ -488,6 +546,7 @@
           <div class="p-name">${p.name}</div>
           <div class="p-team">${p.team}</div>
         </div>
+        <div class="p-pos">${p.pos}</div>
         <div class="p-ovr">${p.ovr}</div>
       </div>`).join('');
 
@@ -503,26 +562,32 @@
 
   function pickPlayer(rank) {
     const tIdx = teamForPick(currentPick);
-    teams[tIdx].picks.push(rank);
+    const slot = autoSlot(tIdx, rank);
+    if (slot === null) return; // team full
+
+    teams[tIdx].roster[slot] = rank;
     available = available.filter(r => r !== rank);
-    history.push({ tIdx, rank });
+    history.push({tIdx, slot, rank});
     currentPick++;
 
-    // Block touches briefly so nothing gets pre-selected after tap
+    // Block list briefly to prevent touch bleed-through
     const list = document.getElementById('players-list');
     list.style.pointerEvents = 'none';
     renderDraft();
-    setTimeout(() => { list.style.pointerEvents = ''; }, 400);
+    setTimeout(() => { list.style.pointerEvents = ''; }, 500);
+
+    // Auto-end when all teams are full
+    const allFull = teams.every((_, i) => pickCount(i) >= MAX_PER_TEAM);
+    if (allFull) setTimeout(() => endDraft(), 400);
   }
 
-  window.undoPick = function () {
+  window.undoPick = function() {
     if (currentPick === 0) return;
     const last = history.pop();
-    teams[last.tIdx].picks.pop();
+    teams[last.tIdx].roster[last.slot] = null;
     available.push(last.rank);
-    available.sort((a, b) => a - b);
+    available.sort((a,b) => a - b);
     currentPick--;
-    // Ensure the undone player is visible
     const pos = PLAYERS.findIndex(p => p.rank === last.rank);
     if (pos >= showCount) showCount = pos + 1;
     renderDraft();
@@ -533,36 +598,43 @@
     renderPlayers();
   });
 
-  window.endDraft = function () {
-    showSummary();
-  };
+  window.endDraft = function() { showSummary(); };
 
   // ── Summary ──
   function showSummary() {
-    const totalPicks = teams.reduce((s, t) => s + t.picks.length, 0);
+    const total = history.length;
     document.getElementById('summary-sub').textContent =
-      `${totalPicks} total picks · ${teams.length} teams`;
+      `${total} picks · ${teams.length} teams`;
 
-    document.getElementById('summary-teams').innerHTML = teams.map(t => {
-      const picks = t.picks.map((rank, i) => {
-        const p = PLAYERS.find(pl => pl.rank === rank);
-        return `<div class="sum-pick">
-          <span class="sum-pick-n">${i + 1}.</span>
-          <span class="sum-pick-name">${p.name}</span>
-          <span class="sum-pick-ovr">${p.ovr}</span>
+    document.getElementById('summary-teams').innerHTML = draftOrder.map((tIdx, orderPos) => {
+      const t = teams[tIdx];
+      const slots = SLOTS.map(slot => {
+        const rank = t.roster[slot];
+        const p    = rank !== null ? PLAYERS.find(pl => pl.rank === rank) : null;
+        return `<div class="sum-slot">
+          <span class="sum-slot-pos">${SLOT_LBL[slot]}</span>
+          ${p
+            ? `<span class="sum-slot-name">${p.name}</span><span class="sum-slot-ovr">${p.ovr}</span>`
+            : `<span class="sum-slot-name sum-slot-empty">—</span>`
+          }
         </div>`;
-      }).join('') || '<div style="font-size:.75rem;color:var(--subtext);padding:4px 0">No picks</div>';
+      }).join('');
+
       return `<div class="sum-team" style="--tc:${t.color}">
-        <div class="sum-team-name">${t.name}</div>
-        ${picks}
+        <div class="sum-team-head">
+          <div class="tc-dot" style="background:${t.color}"></div>
+          <strong>${t.name}</strong>
+          <span class="sum-order-badge">Picks ${SFXS[orderPos]}</span>
+        </div>
+        ${slots}
       </div>`;
     }).join('');
 
     showScreen('screen-summary');
   }
 
-  window.redraft = function () {
-    teams.forEach(t => t.picks = []);
+  window.redraft = function() {
+    teams.forEach(t => { t.roster = emptyRoster(); });
     available   = PLAYERS.map(p => p.rank);
     currentPick = 0;
     history     = [];
@@ -571,7 +643,7 @@
     renderDraft();
   };
 
-  window.startOver = function () {
+  window.startOver = function() {
     selected = new Set();
     document.querySelectorAll('.player-toggle').forEach(b => b.classList.remove('on'));
     document.getElementById('btn-start').disabled = true;
