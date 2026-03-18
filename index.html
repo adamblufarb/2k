@@ -53,12 +53,18 @@
 
     /* ─── Draft ─── */
     .draft-wrap { max-width: 960px; margin: 0 auto; padding: 14px; }
-    .btn-back { background: var(--card2); border: 1.5px solid var(--border); border-radius: 8px; padding: 7px 14px; font-size: 0.8rem; font-weight: 600; color: var(--subtext); cursor: pointer; font-family: inherit; touch-action: manipulation; white-space: nowrap; transition: all 0.15s; }
-    @media (hover: hover) { .btn-back:hover { color: var(--text); border-color: var(--subtext); } }
-    .btn-back:disabled { opacity: 0.3; cursor: not-allowed; }
-    .draft-actions { display: flex; gap: 10px; margin-top: 14px; }
-    .draft-actions .btn-back { flex: 1; }
-    .draft-actions .btn-end  { flex: 2; }
+    .btn-back-full { display: block; width: 100%; margin-top: 10px; padding: 14px; background: var(--card2); border: 1.5px solid var(--border); border-radius: 12px; color: var(--subtext); font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: inherit; touch-action: manipulation; transition: color 0.15s, border-color 0.15s; }
+    @media (hover: hover) { .btn-back-full:hover { color: var(--text); border-color: var(--subtext); } }
+    .btn-back-full:disabled { opacity: 0.3; cursor: not-allowed; }
+    @keyframes rewindAnim {
+      0%   { transform: translateX(0); }
+      20%  { transform: translateX(-14px); }
+      45%  { transform: translateX(-7px); }
+      65%  { transform: translateX(-11px); }
+      82%  { transform: translateX(-3px); }
+      100% { transform: translateX(0); }
+    }
+    .btn-back-full.rewinding { animation: rewindAnim 0.38s ease-out; color: var(--accent); border-color: var(--accent); }
 
     .draft-body { display: grid; grid-template-columns: 1fr 260px; gap: 14px; align-items: start; }
     @media (max-width: 680px) { .draft-body { grid-template-columns: 1fr; } #teams-panel { order: -1; } }
@@ -152,13 +158,11 @@
         <div class="section-lbl">Available Players</div>
         <div id="players-list"></div>
         <button class="show-more" id="show-more">Show 20 More ↓</button>
-        <div class="draft-actions">
-          <button class="btn-back" id="btn-back" onclick="undoPick()" disabled>← Undo</button>
-          <button class="btn-end" onclick="endDraft()">End Draft</button>
-        </div>
+        <button class="btn-end" onclick="endDraft()">End Draft</button>
       </div>
       <div id="teams-panel"></div>
     </div>
+    <button class="btn-back-full" id="btn-back" onclick="undoPick()" disabled>← Undo</button>
   </div>
 </div>
 
@@ -563,6 +567,12 @@
 
   window.undoPick = function() {
     if (currentPick === 0) return;
+    const btn = document.getElementById('btn-back');
+    btn.classList.remove('rewinding');
+    void btn.offsetWidth; // force reflow to restart animation
+    btn.classList.add('rewinding');
+    setTimeout(() => btn.classList.remove('rewinding'), 400);
+
     const last = history.pop();
     teams[last.tIdx].roster[last.slot] = null;
     available.push(last.rank);
