@@ -8,7 +8,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     :root {
       --bg: #0d0d14; --card: #16161f; --card2: #1e1e2a;
-      --accent: #0a84ff; --accent2: #0060df;
+      --accent: #3ec6ff; --accent2: #0070ff;
       --text: #f0f0f0; --subtext: #666; --border: #252530;
       --radius: 12px;
     }
@@ -23,7 +23,7 @@
     .sec-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
     .players-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 36px; }
     .player-toggle { padding: 14px 8px; background: var(--card); border: 2px solid var(--border); border-radius: 14px; color: var(--subtext); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.15s; font-family: inherit; touch-action: manipulation; }
-    .player-toggle.on { border-color: var(--accent); color: var(--accent); background: rgba(10,132,255,0.1); }
+    .player-toggle.on { border-color: var(--accent); color: var(--accent); background: linear-gradient(135deg, rgba(62,198,255,0.14), rgba(0,112,255,0.08)); }
     .btn-primary { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px; cursor: pointer; font-family: inherit; transition: opacity 0.15s, transform 0.1s; touch-action: manipulation; }
     .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
     .btn-primary:not(:disabled):active { transform: scale(0.98); }
@@ -94,7 +94,7 @@
 
     /* Teams panel */
     .team-card { background: var(--card); border-radius: var(--radius); padding: 12px; margin-bottom: 10px; border: 2px solid transparent; transition: border-color 0.2s; }
-    .team-card.cur { border-color: var(--tc); }
+    .team-card.cur { border-color: var(--tc); background: linear-gradient(160deg, var(--card), color-mix(in srgb, var(--tc) 8%, var(--card))); }
     .tc-head { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
     .tc-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
     .tc-name { font-size: 0.82rem; font-weight: 700; }
@@ -103,7 +103,7 @@
     .roster-slot { display: flex; align-items: center; gap: 7px; padding: 5px 6px; border-radius: 7px; margin-bottom: 3px; min-height: 30px; }
     .roster-slot.filled { cursor: grab; }
     .roster-slot.filled:active { cursor: grabbing; }
-    .roster-slot.drag-over { background: rgba(10,132,255,0.15); outline: 1.5px dashed var(--accent); }
+    .roster-slot.drag-over { background: rgba(62,198,255,0.15); outline: 1.5px dashed var(--accent); }
     .slot-pos { font-size: 0.6rem; font-weight: 700; color: var(--subtext); width: 32px; flex-shrink: 0; text-align: center; background: var(--card2); border-radius: 4px; padding: 2px 0; }
     .slot-content { flex: 1; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
     .slot-pname { font-size: 0.75rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -112,7 +112,7 @@
     .drag-handle { font-size: 0.7rem; color: var(--subtext); cursor: grab; flex-shrink: 0; padding: 0 2px; touch-action: none; }
 
     /* Players list */
-    .section-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .section-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
     .player-card { display: flex; align-items: center; gap: 11px; background: var(--card); border-radius: 10px; padding: 10px 13px; margin-bottom: 7px; cursor: pointer; border: 1.5px solid transparent; transition: border-color 0.12s, background 0.12s; touch-action: manipulation; user-select: none; outline: none; -webkit-touch-callout: none; }
     @media (hover: hover) { .player-card:hover { border-color: var(--accent); background: var(--card2); } }
     .player-card:active { opacity: 0.7; }
@@ -121,7 +121,7 @@
     .p-name { font-size: 0.87rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .p-team { font-size: 0.68rem; color: var(--subtext); }
     .p-pos { font-size: 0.62rem; font-weight: 700; color: var(--subtext); background: var(--card2); border-radius: 4px; padding: 1px 5px; flex-shrink: 0; }
-    .p-ovr { font-size: 0.98rem; font-weight: 800; color: var(--accent); flex-shrink: 0; }
+    .p-ovr { font-size: 0.98rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; flex-shrink: 0; }
     .show-more { width: 100%; padding: 11px; background: var(--card); border: 1.5px dashed var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; margin-bottom: 10px; }
     @media (hover: hover) { .show-more:hover { border-color: var(--accent); color: var(--accent); } }
     .btn-end { width: 100%; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; }
@@ -145,7 +145,7 @@
     .btn-modal-cancel { flex: 1; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 12px; color: var(--subtext); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; touch-action: manipulation; }
     .modal-hint { font-size: 0.65rem; color: var(--subtext); margin-top: 12px; }
     .btn-modal-reset { background: none; border: none; color: #ff453a; font-size: 0.72rem; font-weight: 600; cursor: pointer; font-family: inherit; margin-top: 10px; padding: 4px; touch-action: manipulation; display: none; }
-    .sum-avg { font-size: 0.7rem; font-weight: 700; color: var(--accent); background: rgba(10,132,255,0.1); border-radius: 6px; padding: 3px 8px; margin-left: auto; }
+    .sum-avg { font-size: 0.7rem; font-weight: 700; background: linear-gradient(135deg, rgba(62,198,255,0.2), rgba(0,112,255,0.15)); color: var(--accent); border-radius: 6px; padding: 3px 8px; margin-left: auto; border: 1px solid rgba(62,198,255,0.2); }
 
     /* ─── Summary ─── */
     .summary-wrap { max-width: 680px; margin: 0 auto; padding: 24px 14px; }
@@ -722,7 +722,8 @@
   }
 
   function renderPlayers() {
-    const avail   = PLAYERS.filter(p => available.includes(p.rank));
+    const avail   = PLAYERS.filter(p => available.includes(p.rank))
+                           .sort((a, b) => b.ovr - a.ovr || a.rank - b.rank);
     const visible = avail.slice(0, showCount);
     const list    = document.getElementById('players-list');
     list.style.pointerEvents = '';
