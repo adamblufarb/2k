@@ -8,7 +8,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     :root {
       --bg: #0d0d14; --card: #16161f; --card2: #1e1e2a;
-      --accent: #f7a600; --accent2: #e05c1a;
+      --accent: #0a84ff; --accent2: #0060df;
       --text: #f0f0f0; --subtext: #666; --border: #252530;
       --radius: 12px;
     }
@@ -23,8 +23,8 @@
     .sec-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
     .players-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 36px; }
     .player-toggle { padding: 14px 8px; background: var(--card); border: 2px solid var(--border); border-radius: 14px; color: var(--subtext); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.15s; font-family: inherit; touch-action: manipulation; }
-    .player-toggle.on { border-color: var(--accent); color: var(--accent); background: rgba(247,166,0,0.1); }
-    .btn-primary { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #000; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px; cursor: pointer; font-family: inherit; transition: opacity 0.15s, transform 0.1s; touch-action: manipulation; }
+    .player-toggle.on { border-color: var(--accent); color: var(--accent); background: rgba(10,132,255,0.1); }
+    .btn-primary { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px; cursor: pointer; font-family: inherit; transition: opacity 0.15s, transform 0.1s; touch-action: manipulation; }
     .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
     .btn-primary:not(:disabled):active { transform: scale(0.98); }
 
@@ -103,7 +103,7 @@
     .roster-slot { display: flex; align-items: center; gap: 7px; padding: 5px 6px; border-radius: 7px; margin-bottom: 3px; min-height: 30px; }
     .roster-slot.filled { cursor: grab; }
     .roster-slot.filled:active { cursor: grabbing; }
-    .roster-slot.drag-over { background: rgba(247,166,0,0.15); outline: 1.5px dashed var(--accent); }
+    .roster-slot.drag-over { background: rgba(10,132,255,0.15); outline: 1.5px dashed var(--accent); }
     .slot-pos { font-size: 0.6rem; font-weight: 700; color: var(--subtext); width: 32px; flex-shrink: 0; text-align: center; background: var(--card2); border-radius: 4px; padding: 2px 0; }
     .slot-content { flex: 1; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
     .slot-pname { font-size: 0.75rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -116,21 +116,19 @@
     .player-card { display: flex; align-items: center; gap: 11px; background: var(--card); border-radius: 10px; padding: 10px 13px; margin-bottom: 7px; cursor: pointer; border: 1.5px solid transparent; transition: border-color 0.12s, background 0.12s; touch-action: manipulation; user-select: none; outline: none; -webkit-touch-callout: none; }
     @media (hover: hover) { .player-card:hover { border-color: var(--accent); background: var(--card2); } }
     .player-card:active { opacity: 0.7; }
-    .player-card.custom-rated { border-color: rgba(10,132,255,0.4); }
     .p-rank { width: 24px; font-size: 0.65rem; color: var(--subtext); font-weight: 600; text-align: center; flex-shrink: 0; }
     .p-info { flex: 1; min-width: 0; }
     .p-name { font-size: 0.87rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .p-team { font-size: 0.68rem; color: var(--subtext); }
     .p-pos { font-size: 0.62rem; font-weight: 700; color: var(--subtext); background: var(--card2); border-radius: 4px; padding: 1px 5px; flex-shrink: 0; }
     .p-ovr { font-size: 0.98rem; font-weight: 800; color: var(--accent); flex-shrink: 0; }
-    .p-ovr.custom { color: #0a84ff; }
     .show-more { width: 100%; padding: 11px; background: var(--card); border: 1.5px dashed var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; margin-bottom: 10px; }
     @media (hover: hover) { .show-more:hover { border-color: var(--accent); color: var(--accent); } }
     .btn-end { width: 100%; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; }
     @media (hover: hover) { .btn-end:hover { border-color: #ff453a; color: #ff453a; } }
 
     /* Drag ghost */
-    .drag-ghost { position: fixed; pointer-events: none; z-index: 999; background: var(--accent); color: #000; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; transform: translate(-50%, -50%); white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+    .drag-ghost { position: fixed; pointer-events: none; z-index: 999; background: var(--accent); color: #fff; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; transform: translate(-50%, -50%); white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
 
     /* ─── Rating Modal ─── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
@@ -143,9 +141,11 @@
     .step-btn:active { transform: scale(0.9); }
     .rating-val { font-size: 3rem; font-weight: 900; color: var(--accent); min-width: 80px; }
     .modal-actions { display: flex; gap: 10px; }
-    .btn-modal-save { flex: 2; padding: 13px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #000; font-weight: 800; font-size: 0.95rem; border: none; border-radius: 12px; cursor: pointer; font-family: inherit; touch-action: manipulation; }
+    .btn-modal-save { flex: 2; padding: 13px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-weight: 800; font-size: 0.95rem; border: none; border-radius: 12px; cursor: pointer; font-family: inherit; touch-action: manipulation; }
     .btn-modal-cancel { flex: 1; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 12px; color: var(--subtext); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; touch-action: manipulation; }
     .modal-hint { font-size: 0.65rem; color: var(--subtext); margin-top: 12px; }
+    .btn-modal-reset { background: none; border: none; color: #ff453a; font-size: 0.72rem; font-weight: 600; cursor: pointer; font-family: inherit; margin-top: 10px; padding: 4px; touch-action: manipulation; display: none; }
+    .sum-avg { font-size: 0.7rem; font-weight: 700; color: var(--accent); background: rgba(10,132,255,0.1); border-radius: 6px; padding: 3px 8px; margin-left: auto; }
 
     /* ─── Summary ─── */
     .summary-wrap { max-width: 680px; margin: 0 auto; padding: 24px 14px; }
@@ -169,7 +169,7 @@
     .sum-slot-ovr { font-size: 0.75rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
     .sum-slot-empty { color: var(--subtext); font-style: italic; }
     .summary-actions { display: flex; flex-direction: column; gap: 10px; max-width: 440px; margin: 0 auto; }
-    .btn-redraft { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #000; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px; cursor: pointer; font-family: inherit; touch-action: manipulation; }
+    .btn-redraft { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-weight: 800; font-size: 1rem; border: none; border-radius: 14px; cursor: pointer; font-family: inherit; touch-action: manipulation; }
     .btn-startover { width: 100%; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 14px; color: var(--subtext); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; touch-action: manipulation; transition: all 0.15s; }
     @media (hover: hover) { .btn-startover:hover { border-color: var(--subtext); color: var(--text); } }
   </style>
@@ -253,7 +253,8 @@
       <button class="btn-modal-save" onclick="saveRating()">Save</button>
       <button class="btn-modal-cancel" onclick="closeRatingModal()">Cancel</button>
     </div>
-    <div class="modal-hint">Hold + tap to long-press any player</div>
+    <button class="btn-modal-reset" id="btn-modal-reset" onclick="resetRating()">Reset to default</button>
+    <div class="modal-hint">Hold any player to adjust rating</div>
   </div>
 </div>
 
@@ -369,6 +370,10 @@
   ];
 
   // ── Custom Ratings (localStorage) ──
+  // Store originals before any overrides
+  const ORIGINAL_OVRS = {};
+  PLAYERS.forEach(p => { ORIGINAL_OVRS[p.rank] = p.ovr; });
+
   let customRatings = JSON.parse(localStorage.getItem('2k_custom_ratings') || '{}');
   // Apply saved custom ratings to PLAYERS
   PLAYERS.forEach(p => {
@@ -722,18 +727,16 @@
     const list    = document.getElementById('players-list');
     list.style.pointerEvents = '';
 
-    list.innerHTML = visible.map(p => {
-      const isCustom = customRatings[p.rank] !== undefined;
-      return `<div class="player-card ${isCustom ? 'custom-rated' : ''}" data-rank="${p.rank}" tabindex="-1">
+    list.innerHTML = visible.map(p => `
+      <div class="player-card" data-rank="${p.rank}" tabindex="-1">
         <div class="p-rank">#${p.rank}</div>
         <div class="p-info">
           <div class="p-name">${p.name}</div>
           <div class="p-team">${p.team}</div>
         </div>
         <div class="p-pos">${p.pos}</div>
-        <div class="p-ovr ${isCustom ? 'custom' : ''}">${p.ovr}</div>
-      </div>`;
-    }).join('');
+        <div class="p-ovr">${p.ovr}</div>
+      </div>`).join('');
 
     list.querySelectorAll('.player-card').forEach(card => {
       const rank = +card.dataset.rank;
@@ -853,6 +856,8 @@
     editingOvr  = p.ovr;
     document.getElementById('modal-player-name').textContent = p.name;
     document.getElementById('modal-rating').textContent = editingOvr;
+    document.getElementById('btn-modal-reset').style.display =
+      customRatings[rank] !== undefined ? 'block' : 'none';
     document.getElementById('rating-modal').style.display = 'flex';
   }
 
@@ -873,6 +878,15 @@
   window.closeRatingModal = function() {
     document.getElementById('rating-modal').style.display = 'none';
     editingRank = null;
+  };
+
+  window.resetRating = function() {
+    const p = PLAYERS.find(pl => pl.rank === editingRank);
+    p.ovr = ORIGINAL_OVRS[editingRank];
+    delete customRatings[editingRank];
+    localStorage.setItem('2k_custom_ratings', JSON.stringify(customRatings));
+    closeRatingModal();
+    renderPlayers();
   };
 
   // Close modal on overlay click
@@ -927,10 +941,19 @@
         </div>`;
       }).join('');
 
+      const starters = ['PG','SG','SF','PF','C']
+        .map(pos => t.roster[pos])
+        .filter(r => r !== null)
+        .map(rank => PLAYERS.find(p => p.rank === rank).ovr);
+      const avg = starters.length
+        ? (starters.reduce((a,b) => a+b, 0) / starters.length).toFixed(1)
+        : null;
+
       return `<div class="sum-team" style="--tc:${t.color}">
         <div class="sum-team-head">
           <div class="tc-dot" style="background:${t.color}"></div>
           <strong>${t.name}</strong>
+          ${avg ? `<span class="sum-avg">Avg ${avg}</span>` : ''}
           <span class="sum-order-badge">Picks ${SFXS[orderPos]}</span>
         </div>
         ${slots}
