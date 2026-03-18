@@ -28,13 +28,16 @@
     .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
     .btn-primary:not(:disabled):active { transform: scale(0.98); }
 
-    /* ─── Reveal ─── */
+    /* ─── Reveal / Matchup shared ─── */
     .reveal-wrap { max-width: 440px; margin: 0 auto; padding: 40px 20px; text-align: center; }
     .reveal-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
     .reveal-sub { color: var(--subtext); font-size: 0.85rem; margin-bottom: 28px; min-height: 20px; }
     .hat-btn { background: none; border: none; cursor: pointer; font-size: 100px; line-height: 1; display: block; margin: 48px auto 40px; transform: scaleY(-1); transition: transform 0.1s; touch-action: manipulation; user-select: none; }
     .hat-btn:active { transform: scaleY(-1) scale(0.93); }
     .hat-btn.shake { animation: hatShake 0.55s ease-in-out; }
+    .wrestling-btn { background: none; border: none; cursor: pointer; font-size: 100px; line-height: 1; display: block; margin: 40px auto 36px; transition: transform 0.1s; touch-action: manipulation; user-select: none; }
+    .wrestling-btn:active { transform: scale(0.93); }
+    .wrestling-btn.shake { animation: hatShake 0.55s ease-in-out; }
     @keyframes hatShake {
       0%,100% { transform: scaleY(-1) rotate(0deg); }
       15%  { transform: scaleY(-1) rotate(-12deg); }
@@ -43,6 +46,14 @@
       75%  { transform: scaleY(-1) rotate(7deg); }
       90%  { transform: scaleY(-1) rotate(-3deg); }
     }
+    @keyframes wresShake {
+      0%,100% { transform: rotate(0deg) scale(1); }
+      20% { transform: rotate(-8deg) scale(1.05); }
+      40% { transform: rotate(8deg) scale(1.05); }
+      60% { transform: rotate(-5deg) scale(1.02); }
+      80% { transform: rotate(5deg) scale(1.02); }
+    }
+    .wrestling-btn.shake { animation: wresShake 0.55s ease-in-out; }
     .order-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 300px; margin: 0 auto 28px; }
     .order-item { display: flex; align-items: center; gap: 12px; background: var(--card); border-radius: 12px; padding: 13px 16px; opacity: 0; transform: translateY(20px) scale(0.88); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
     .order-item.show { opacity: 1; transform: none; }
@@ -51,9 +62,21 @@
     .order-badge { margin-left: auto; font-size: 0.7rem; color: var(--subtext); }
     .btn-go { display: none; max-width: 300px; margin: 0 auto; }
 
+    /* ─── Matchup display ─── */
+    .matchup-sides { display: flex; align-items: flex-start; gap: 10px; max-width: 360px; margin: 0 auto 20px; }
+    .matchup-side { flex: 1; }
+    .side-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .matchup-vs { align-self: center; margin-top: 24px; font-size: 1.1rem; font-weight: 900; color: var(--subtext); flex-shrink: 0; }
+    .matchup-item { display: flex; align-items: center; gap: 10px; background: var(--card); border-radius: 10px; padding: 10px 12px; margin-bottom: 6px; opacity: 0; transform: translateY(16px) scale(0.9); transition: all 0.38s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .matchup-item.show { opacity: 1; transform: none; }
+    .matchup-item.empty { opacity: 0.3; transform: none; transition: none; }
+    .mi-name { font-weight: 700; font-size: 0.9rem; }
+    .mi-role { font-size: 0.65rem; color: var(--subtext); margin-top: 1px; }
+    .bye-row { text-align: center; margin-top: 12px; font-size: 0.82rem; color: var(--subtext); background: var(--card); border-radius: 10px; padding: 10px 14px; max-width: 360px; margin-left: auto; margin-right: auto; }
+
     /* ─── Draft ─── */
     .draft-wrap { max-width: 960px; margin: 0 auto; padding: 14px; }
-    .btn-back-full { display: block; width: 100%; margin-top: 10px; padding: 14px; background: var(--card2); border: 1.5px solid var(--border); border-radius: 12px; color: var(--subtext); font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: inherit; touch-action: manipulation; transition: color 0.15s, border-color 0.15s; }
+    .btn-back-full { display: block; width: 100%; padding: 13px; background: var(--card2); border: 1.5px solid var(--border); border-radius: 12px; color: var(--subtext); font-size: 0.88rem; font-weight: 700; cursor: pointer; font-family: inherit; touch-action: manipulation; transition: color 0.15s, border-color 0.15s; margin-bottom: 14px; }
     @media (hover: hover) { .btn-back-full:hover { color: var(--text); border-color: var(--subtext); } }
     .btn-back-full:disabled { opacity: 0.3; cursor: not-allowed; }
     @keyframes rewindAnim {
@@ -69,7 +92,7 @@
     .draft-body { display: grid; grid-template-columns: 1fr 260px; gap: 14px; align-items: start; }
     @media (max-width: 680px) { .draft-body { grid-template-columns: 1fr; } #teams-panel { order: -1; } }
 
-    /* Teams panel (stacked) */
+    /* Teams panel */
     .team-card { background: var(--card); border-radius: var(--radius); padding: 12px; margin-bottom: 10px; border: 2px solid transparent; transition: border-color 0.2s; }
     .team-card.cur { border-color: var(--tc); }
     .tc-head { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
@@ -90,27 +113,52 @@
 
     /* Players list */
     .section-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .player-card { display: flex; align-items: center; gap: 11px; background: var(--card); border-radius: 10px; padding: 10px 13px; margin-bottom: 7px; cursor: pointer; border: 1.5px solid transparent; transition: border-color 0.12s, background 0.12s; touch-action: manipulation; user-select: none; outline: none; }
+    .player-card { display: flex; align-items: center; gap: 11px; background: var(--card); border-radius: 10px; padding: 10px 13px; margin-bottom: 7px; cursor: pointer; border: 1.5px solid transparent; transition: border-color 0.12s, background 0.12s; touch-action: manipulation; user-select: none; outline: none; -webkit-touch-callout: none; }
     @media (hover: hover) { .player-card:hover { border-color: var(--accent); background: var(--card2); } }
     .player-card:active { opacity: 0.7; }
+    .player-card.custom-rated { border-color: rgba(10,132,255,0.4); }
     .p-rank { width: 24px; font-size: 0.65rem; color: var(--subtext); font-weight: 600; text-align: center; flex-shrink: 0; }
     .p-info { flex: 1; min-width: 0; }
     .p-name { font-size: 0.87rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .p-team { font-size: 0.68rem; color: var(--subtext); }
     .p-pos { font-size: 0.62rem; font-weight: 700; color: var(--subtext); background: var(--card2); border-radius: 4px; padding: 1px 5px; flex-shrink: 0; }
     .p-ovr { font-size: 0.98rem; font-weight: 800; color: var(--accent); flex-shrink: 0; }
-    .show-more { width: 100%; padding: 11px; background: var(--card); border: 1.5px dashed var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; }
+    .p-ovr.custom { color: #0a84ff; }
+    .show-more { width: 100%; padding: 11px; background: var(--card); border: 1.5px dashed var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; margin-bottom: 10px; }
     @media (hover: hover) { .show-more:hover { border-color: var(--accent); color: var(--accent); } }
-    .btn-end { width: 100%; margin-top: 16px; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; }
+    .btn-end { width: 100%; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 10px; color: var(--subtext); font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s; touch-action: manipulation; }
     @media (hover: hover) { .btn-end:hover { border-color: #ff453a; color: #ff453a; } }
 
     /* Drag ghost */
     .drag-ghost { position: fixed; pointer-events: none; z-index: 999; background: var(--accent); color: #000; padding: 5px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; transform: translate(-50%, -50%); white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
 
+    /* ─── Rating Modal ─── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+    .modal-card { background: var(--card); border-radius: 20px; padding: 28px 24px; width: 100%; max-width: 320px; text-align: center; border: 1px solid var(--border); }
+    .modal-title { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+    .modal-sub { font-size: 0.75rem; color: var(--subtext); margin-bottom: 24px; }
+    .rating-stepper { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 28px; }
+    .step-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--card2); border: 1.5px solid var(--border); color: var(--text); font-size: 1.4rem; font-weight: 700; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; transition: all 0.12s; touch-action: manipulation; }
+    @media (hover: hover) { .step-btn:hover { border-color: var(--accent); color: var(--accent); } }
+    .step-btn:active { transform: scale(0.9); }
+    .rating-val { font-size: 3rem; font-weight: 900; color: var(--accent); min-width: 80px; }
+    .modal-actions { display: flex; gap: 10px; }
+    .btn-modal-save { flex: 2; padding: 13px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #000; font-weight: 800; font-size: 0.95rem; border: none; border-radius: 12px; cursor: pointer; font-family: inherit; touch-action: manipulation; }
+    .btn-modal-cancel { flex: 1; padding: 13px; background: transparent; border: 1.5px solid var(--border); border-radius: 12px; color: var(--subtext); font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: inherit; touch-action: manipulation; }
+    .modal-hint { font-size: 0.65rem; color: var(--subtext); margin-top: 12px; }
+
     /* ─── Summary ─── */
     .summary-wrap { max-width: 680px; margin: 0 auto; padding: 24px 14px; }
     .summary-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 4px; text-align: center; }
-    .summary-sub { color: var(--subtext); font-size: 0.82rem; text-align: center; margin-bottom: 24px; }
+    .summary-sub { color: var(--subtext); font-size: 0.82rem; text-align: center; margin-bottom: 20px; }
+    .matchup-card { background: var(--card); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 20px; border-top: 3px solid var(--accent); }
+    .matchup-card-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .matchup-card-body { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .matchup-team-chip { display: flex; align-items: center; gap: 6px; background: var(--card2); border-radius: 8px; padding: 6px 10px; }
+    .chip-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .chip-name { font-size: 0.82rem; font-weight: 700; }
+    .chip-role { font-size: 0.62rem; color: var(--subtext); margin-top: 1px; }
+    .matchup-vs-badge { font-size: 0.78rem; font-weight: 900; color: var(--subtext); }
     .sum-team { background: var(--card); border-radius: var(--radius); padding: 14px; margin-bottom: 12px; border-top: 3px solid var(--tc); }
     .sum-team-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
     .sum-order-badge { font-size: 0.62rem; font-weight: 700; background: var(--card2); border-radius: 20px; padding: 2px 8px; color: var(--subtext); margin-left: auto; }
@@ -155,6 +203,7 @@
   <div class="draft-wrap">
     <div class="draft-body">
       <div id="players-panel">
+        <button class="btn-back-full" id="btn-back" onclick="undoPick()" disabled>← Undo</button>
         <div class="section-lbl">Available Players</div>
         <div id="players-list"></div>
         <button class="show-more" id="show-more">Show 20 More ↓</button>
@@ -162,7 +211,17 @@
       </div>
       <div id="teams-panel"></div>
     </div>
-    <button class="btn-back-full" id="btn-back" onclick="undoPick()" disabled>← Undo</button>
+  </div>
+</div>
+
+<!-- Matchup -->
+<div class="screen" id="screen-matchup">
+  <div class="reveal-wrap">
+    <div class="reveal-title">Match Up</div>
+    <div class="reveal-sub" id="matchup-sub">Tap to reveal match up</div>
+    <button class="wrestling-btn" id="wrestling" onclick="drawMatchup()">🤼</button>
+    <div id="matchup-display"></div>
+    <button class="btn-primary btn-go" id="btn-matchup-go" onclick="showSummary()">View Draft Summary →</button>
   </div>
 </div>
 
@@ -171,11 +230,30 @@
   <div class="summary-wrap">
     <div class="summary-title">🏆 Draft Complete</div>
     <div class="summary-sub" id="summary-sub"></div>
+    <div id="summary-matchup"></div>
     <div id="summary-teams"></div>
     <div class="summary-actions">
       <button class="btn-redraft" onclick="redraft()">Re-draft (Same Order)</button>
       <button class="btn-startover" onclick="startOver()">Start Over</button>
     </div>
+  </div>
+</div>
+
+<!-- Rating edit modal -->
+<div class="modal-overlay" id="rating-modal" style="display:none">
+  <div class="modal-card">
+    <div class="modal-title" id="modal-player-name"></div>
+    <div class="modal-sub">Adjust OVR Rating</div>
+    <div class="rating-stepper">
+      <button class="step-btn" onclick="adjustRating(-1)">−</button>
+      <div class="rating-val" id="modal-rating">99</div>
+      <button class="step-btn" onclick="adjustRating(1)">+</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-modal-save" onclick="saveRating()">Save</button>
+      <button class="btn-modal-cancel" onclick="closeRatingModal()">Cancel</button>
+    </div>
+    <div class="modal-hint">Hold + tap to long-press any player</div>
   </div>
 </div>
 
@@ -290,6 +368,14 @@
     {rank:100,name:"Bobby Portis Jr.",         team:"Milwaukee Bucks",        ovr:81, pos:'PF'},
   ];
 
+  // ── Custom Ratings (localStorage) ──
+  let customRatings = JSON.parse(localStorage.getItem('2k_custom_ratings') || '{}');
+  // Apply saved custom ratings to PLAYERS
+  PLAYERS.forEach(p => {
+    const saved = customRatings[p.rank];
+    if (saved !== undefined) p.ovr = saved;
+  });
+
   // ── State ──
   let selected    = new Set();
   let teams       = [];
@@ -298,8 +384,18 @@
   let drawIndex   = 0;
   let currentPick = 0;
   let available   = [];
-  let history     = []; // [{tIdx, slot, rank}]
+  let history     = [];
   let showCount   = 20;
+
+  // Matchup state
+  let matchupSlots  = [];
+  let matchupPool   = [];
+  let matchupDrawn  = [];
+  let matchupBusy   = false;
+
+  // Rating modal state
+  let editingRank = null;
+  let editingOvr  = null;
 
   function emptyRoster() { return {PG:null,SG:null,SF:null,PF:null,C:null,B1:null,B2:null}; }
 
@@ -323,6 +419,37 @@
     return draftOrder[round % 2 === 0 ? pos : n - 1 - pos];
   }
 
+  function getMatchupSlots(n) {
+    if (n <= 2) return null;
+    if (n === 3) return [
+      {side:'A', role:'Primary'},
+      {side:'B', role:'Primary'},
+      {side:'B', role:'Secondary'}
+    ];
+    if (n === 4) return [
+      {side:'A', role:'Primary'},
+      {side:'A', role:'Secondary'},
+      {side:'B', role:'Primary'},
+      {side:'B', role:'Secondary'}
+    ];
+    if (n === 5) return [
+      {side:'A', role:'Primary'},
+      {side:'A', role:'Secondary'},
+      {side:'B', role:'Primary'},
+      {side:'B', role:'Secondary'},
+      {side:'bye', role:'Sits Out'}
+    ];
+    // 6 teams: 3v3
+    return [
+      {side:'A', role:'Primary'},
+      {side:'A', role:'Secondary'},
+      {side:'A', role:'Third'},
+      {side:'B', role:'Primary'},
+      {side:'B', role:'Secondary'},
+      {side:'B', role:'Third'}
+    ];
+  }
+
   // ── Setup ──
   const grid = document.getElementById('players-grid');
   NAMES.forEach((name, i) => {
@@ -340,7 +467,6 @@
   document.getElementById('btn-start').addEventListener('click', () => {
     const sel = [...selected].sort((a,b) => a - b);
     teams     = sel.map(i => ({ name: NAMES[i], color: COLORS[i], roster: emptyRoster() }));
-    // Build and immediately shuffle remaining so first tap is already unpredictable
     remaining = Array.from({length: teams.length}, (_, i) => i);
     for (let i = remaining.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -370,7 +496,6 @@
     setTimeout(() => hat.classList.remove('shake'), 560);
 
     setTimeout(() => {
-      // Truly random: pick from whatever's left
       const idx  = Math.floor(Math.random() * remaining.length);
       const tIdx = remaining.splice(idx, 1)[0];
       draftOrder.push(tIdx);
@@ -399,6 +524,85 @@
     renderDraft();
   });
 
+  // ── Matchup ──
+  window.drawMatchup = function() {
+    if (matchupBusy || matchupPool.length === 0) return;
+    matchupBusy = true;
+    const wres = document.getElementById('wrestling');
+    wres.classList.add('shake');
+    setTimeout(() => wres.classList.remove('shake'), 560);
+
+    setTimeout(() => {
+      const nextSlot = matchupSlots[matchupDrawn.length];
+      const idx  = Math.floor(Math.random() * matchupPool.length);
+      const tIdx = matchupPool.splice(idx, 1)[0];
+      matchupDrawn.push({tIdx, side: nextSlot.side, role: nextSlot.role});
+      matchupBusy = false;
+      renderMatchupScreen();
+    }, 300);
+  };
+
+  function renderMatchupScreen() {
+    const slotsA   = matchupSlots.filter(s => s.side === 'A');
+    const slotsB   = matchupSlots.filter(s => s.side === 'B');
+    const hasBye   = matchupSlots.some(s => s.side === 'bye');
+    const drawnA   = matchupDrawn.filter(m => m.side === 'A');
+    const drawnB   = matchupDrawn.filter(m => m.side === 'B');
+    const drawnBye = matchupDrawn.find(m => m.side === 'bye');
+
+    function slotHTML(slot, drawn, idx) {
+      if (drawn) {
+        const t = teams[drawn.tIdx];
+        return `<div class="matchup-item show" style="transition-delay:${idx * 0.05}s">
+          <div class="order-num" style="background:${t.color};font-size:0.75rem">${t.name[0]}</div>
+          <div><div class="mi-name">${t.name}</div><div class="mi-role">${slot.role}</div></div>
+        </div>`;
+      }
+      return `<div class="matchup-item empty">
+        <div class="order-num" style="background:var(--card2);color:var(--subtext)">?</div>
+        <div><div class="mi-name" style="color:var(--subtext)">${slot.role}</div></div>
+      </div>`;
+    }
+
+    let html = '<div class="matchup-sides">';
+    // Side A
+    html += `<div class="matchup-side">
+      <div class="side-lbl" style="color:#0a84ff">Side A</div>
+      ${slotsA.map((s, i) => slotHTML(s, drawnA[i], i)).join('')}
+    </div>`;
+    // VS
+    html += `<div class="matchup-vs">VS</div>`;
+    // Side B
+    html += `<div class="matchup-side">
+      <div class="side-lbl" style="color:#ff453a">Side B</div>
+      ${slotsB.map((s, i) => slotHTML(s, drawnB[i], i)).join('')}
+    </div>`;
+    html += '</div>';
+
+    // Bye row
+    if (hasBye) {
+      if (drawnBye) {
+        const t = teams[drawnBye.tIdx];
+        html += `<div class="bye-row">Sits Out: <span style="color:${t.color};font-weight:700">${t.name}</span></div>`;
+      } else {
+        html += `<div class="bye-row">Sits Out: <em>TBD</em></div>`;
+      }
+    }
+
+    document.getElementById('matchup-display').innerHTML = html;
+
+    const remaining = matchupPool.length;
+    const btnGo = document.getElementById('btn-matchup-go');
+    if (remaining === 0) {
+      document.getElementById('matchup-sub').textContent = 'Match up set!';
+      btnGo.style.display = 'block';
+    } else {
+      document.getElementById('matchup-sub').textContent =
+        matchupDrawn.length === 0 ? 'Tap to reveal match up' : `${remaining} team${remaining > 1 ? 's' : ''} left`;
+      btnGo.style.display = 'none';
+    }
+  }
+
   // ── Drag/drop state ──
   let drag = null;
 
@@ -417,7 +621,6 @@
 
     drag = { tIdx, slot, rank, ghost };
 
-    // Mark source as dragging (visually empty)
     const srcEl = document.querySelector(`[data-tidx="${tIdx}"][data-slot="${slot}"]`);
     if (srcEl) srcEl.style.opacity = '0.3';
 
@@ -430,7 +633,6 @@
     e.preventDefault();
     drag.ghost.style.left = e.clientX + 'px';
     drag.ghost.style.top  = e.clientY + 'px';
-    // Highlight drop target
     document.querySelectorAll('.roster-slot').forEach(el => el.classList.remove('drag-over'));
     const el = document.elementFromPoint(e.clientX, e.clientY)?.closest('[data-slot]');
     if (el) el.classList.add('drag-over');
@@ -445,7 +647,6 @@
       const dstTIdx = +target.dataset.tidx;
       const dstSlot = target.dataset.slot;
       if (!(dstTIdx === drag.tIdx && dstSlot === drag.slot)) {
-        // Swap
         const dstRank = teams[dstTIdx].roster[dstSlot];
         teams[dstTIdx].roster[dstSlot]  = drag.rank;
         teams[drag.tIdx].roster[drag.slot] = dstRank;
@@ -453,7 +654,6 @@
       }
     }
 
-    // Restore opacity of source
     const srcEl = document.querySelector(`[data-tidx="${drag.tIdx}"][data-slot="${drag.slot}"]`);
     if (srcEl) srcEl.style.opacity = '';
 
@@ -509,7 +709,6 @@
       </div>`;
     }).join('');
 
-    // Attach drag listeners to filled slots
     panel.querySelectorAll('.roster-slot.filled').forEach(el => {
       el.addEventListener('pointerdown', (e) => {
         startDrag(e, +el.dataset.tidx, el.dataset.slot);
@@ -523,19 +722,22 @@
     const list    = document.getElementById('players-list');
     list.style.pointerEvents = '';
 
-    list.innerHTML = visible.map(p => `
-      <div class="player-card" data-rank="${p.rank}" tabindex="-1">
+    list.innerHTML = visible.map(p => {
+      const isCustom = customRatings[p.rank] !== undefined;
+      return `<div class="player-card ${isCustom ? 'custom-rated' : ''}" data-rank="${p.rank}" tabindex="-1">
         <div class="p-rank">#${p.rank}</div>
         <div class="p-info">
           <div class="p-name">${p.name}</div>
           <div class="p-team">${p.team}</div>
         </div>
         <div class="p-pos">${p.pos}</div>
-        <div class="p-ovr">${p.ovr}</div>
-      </div>`).join('');
+        <div class="p-ovr ${isCustom ? 'custom' : ''}">${p.ovr}</div>
+      </div>`;
+    }).join('');
 
     list.querySelectorAll('.player-card').forEach(card => {
-      card.addEventListener('click', () => pickPlayer(+card.dataset.rank));
+      const rank = +card.dataset.rank;
+      attachCardHandlers(card, rank);
     });
 
     const btn = document.getElementById('show-more');
@@ -544,23 +746,57 @@
     if (rem > 0) btn.textContent = `Show ${Math.min(20, rem)} More ↓`;
   }
 
+  function attachCardHandlers(card, rank) {
+    let longPressTimer = null;
+    let startX, startY;
+    let didLongPress = false;
+
+    card.addEventListener('pointerdown', (e) => {
+      didLongPress = false;
+      startX = e.clientX; startY = e.clientY;
+      longPressTimer = setTimeout(() => {
+        longPressTimer = null;
+        didLongPress = true;
+        openRatingModal(rank);
+      }, 600);
+    });
+
+    card.addEventListener('pointermove', (e) => {
+      if (longPressTimer && (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10)) {
+        clearTimeout(longPressTimer);
+        longPressTimer = null;
+      }
+    });
+
+    ['pointerup', 'pointercancel'].forEach(ev => {
+      card.addEventListener(ev, () => {
+        if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+      });
+    });
+
+    card.addEventListener('contextmenu', e => e.preventDefault());
+
+    card.addEventListener('click', () => {
+      if (didLongPress) { didLongPress = false; return; }
+      pickPlayer(rank);
+    });
+  }
+
   function pickPlayer(rank) {
     const tIdx = teamForPick(currentPick);
     const slot = autoSlot(tIdx, rank);
-    if (slot === null) return; // team full
+    if (slot === null) return;
 
     teams[tIdx].roster[slot] = rank;
     available = available.filter(r => r !== rank);
     history.push({tIdx, slot, rank});
     currentPick++;
 
-    // Block list briefly to prevent touch bleed-through
     const list = document.getElementById('players-list');
     list.style.pointerEvents = 'none';
     renderDraft();
     setTimeout(() => { list.style.pointerEvents = ''; }, 500);
 
-    // Auto-end when all teams are full
     const allFull = teams.every((_, i) => pickCount(i) >= MAX_PER_TEAM);
     if (allFull) setTimeout(() => endDraft(), 400);
   }
@@ -569,7 +805,7 @@
     if (currentPick === 0) return;
     const btn = document.getElementById('btn-back');
     btn.classList.remove('rewinding');
-    void btn.offsetWidth; // force reflow to restart animation
+    void btn.offsetWidth;
     btn.classList.add('rewinding');
     setTimeout(() => btn.classList.remove('rewinding'), 400);
 
@@ -588,13 +824,94 @@
     renderPlayers();
   });
 
-  window.endDraft = function() { showSummary(); };
+  window.endDraft = function() {
+    const slots = getMatchupSlots(teams.length);
+    if (!slots) {
+      showSummary();
+      return;
+    }
+    matchupSlots  = slots;
+    matchupPool   = [...draftOrder]; // copy all team indices
+    // Shuffle
+    for (let i = matchupPool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [matchupPool[i], matchupPool[j]] = [matchupPool[j], matchupPool[i]];
+    }
+    matchupDrawn  = [];
+    matchupBusy   = false;
+
+    document.getElementById('btn-matchup-go').style.display = 'none';
+    document.getElementById('matchup-sub').textContent = 'Tap to reveal match up';
+    renderMatchupScreen();
+    showScreen('screen-matchup');
+  };
+
+  // ── Rating Modal ──
+  function openRatingModal(rank) {
+    const p = PLAYERS.find(pl => pl.rank === rank);
+    editingRank = rank;
+    editingOvr  = p.ovr;
+    document.getElementById('modal-player-name').textContent = p.name;
+    document.getElementById('modal-rating').textContent = editingOvr;
+    document.getElementById('rating-modal').style.display = 'flex';
+  }
+
+  window.adjustRating = function(delta) {
+    editingOvr = Math.max(50, Math.min(99, editingOvr + delta));
+    document.getElementById('modal-rating').textContent = editingOvr;
+  };
+
+  window.saveRating = function() {
+    const p = PLAYERS.find(pl => pl.rank === editingRank);
+    p.ovr = editingOvr;
+    customRatings[editingRank] = editingOvr;
+    localStorage.setItem('2k_custom_ratings', JSON.stringify(customRatings));
+    closeRatingModal();
+    renderPlayers();
+  };
+
+  window.closeRatingModal = function() {
+    document.getElementById('rating-modal').style.display = 'none';
+    editingRank = null;
+  };
+
+  // Close modal on overlay click
+  document.getElementById('rating-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeRatingModal();
+  });
 
   // ── Summary ──
-  function showSummary() {
+  window.showSummary = function() {
     const total = history.length;
     document.getElementById('summary-sub').textContent =
       `${total} picks · ${teams.length} teams`;
+
+    // Matchup card
+    let matchupHTML = '';
+    if (matchupDrawn.length > 0) {
+      const sideA = matchupDrawn.filter(m => m.side === 'A');
+      const sideB = matchupDrawn.filter(m => m.side === 'B');
+      const bye   = matchupDrawn.find(m => m.side === 'bye');
+
+      const chipHTML = (drawn) => {
+        const t = teams[drawn.tIdx];
+        return `<div class="matchup-team-chip">
+          <div class="chip-dot" style="background:${t.color}"></div>
+          <div><div class="chip-name">${t.name}</div><div class="chip-role">${drawn.role}</div></div>
+        </div>`;
+      };
+
+      matchupHTML = `<div class="matchup-card">
+        <div class="matchup-card-title">🤼 Match Up</div>
+        <div class="matchup-card-body">
+          ${sideA.map(chipHTML).join('')}
+          <div class="matchup-vs-badge">VS</div>
+          ${sideB.map(chipHTML).join('')}
+          ${bye ? `<div style="width:100%;margin-top:6px;font-size:0.75rem;color:var(--subtext)">Sits Out: <span style="color:${teams[bye.tIdx].color};font-weight:700">${teams[bye.tIdx].name}</span></div>` : ''}
+        </div>
+      </div>`;
+    }
+    document.getElementById('summary-matchup').innerHTML = matchupHTML;
 
     document.getElementById('summary-teams').innerHTML = draftOrder.map((tIdx, orderPos) => {
       const t = teams[tIdx];
@@ -621,7 +938,7 @@
     }).join('');
 
     showScreen('screen-summary');
-  }
+  };
 
   window.redraft = function() {
     teams.forEach(t => { t.roster = emptyRoster(); });
