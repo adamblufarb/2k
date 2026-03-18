@@ -53,18 +53,12 @@
 
     /* ─── Draft ─── */
     .draft-wrap { max-width: 960px; margin: 0 auto; padding: 14px; }
-    .pick-bar { background: var(--card); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .pb-left { display: flex; align-items: center; gap: 10px; }
-    .pb-dot { width: 11px; height: 11px; border-radius: 50%; animation: dotPulse 1.5s ease-in-out infinite; flex-shrink: 0; }
-    @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.72)} }
-    .pb-lbl { font-size: 0.65rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 0.08em; }
-    .pb-name { font-size: 1rem; font-weight: 800; }
-    .pb-right { display: flex; align-items: center; gap: 8px; }
-    .pb-badge { background: var(--card2); border-radius: 8px; padding: 5px 10px; font-size: 0.72rem; color: var(--subtext); white-space: nowrap; }
-    .pb-badge strong { color: var(--text); }
-    .btn-back { background: var(--card2); border: 1.5px solid var(--border); border-radius: 8px; padding: 5px 10px; font-size: 0.72rem; font-weight: 600; color: var(--subtext); cursor: pointer; font-family: inherit; touch-action: manipulation; white-space: nowrap; transition: all 0.15s; }
-    .btn-back:hover { color: var(--text); border-color: var(--subtext); }
+    .btn-back { background: var(--card2); border: 1.5px solid var(--border); border-radius: 8px; padding: 7px 14px; font-size: 0.8rem; font-weight: 600; color: var(--subtext); cursor: pointer; font-family: inherit; touch-action: manipulation; white-space: nowrap; transition: all 0.15s; }
+    @media (hover: hover) { .btn-back:hover { color: var(--text); border-color: var(--subtext); } }
     .btn-back:disabled { opacity: 0.3; cursor: not-allowed; }
+    .draft-actions { display: flex; gap: 10px; margin-top: 14px; }
+    .draft-actions .btn-back { flex: 1; }
+    .draft-actions .btn-end  { flex: 2; }
 
     .draft-body { display: grid; grid-template-columns: 1fr 260px; gap: 14px; align-items: start; }
     @media (max-width: 680px) { .draft-body { grid-template-columns: 1fr; } #teams-panel { order: -1; } }
@@ -153,25 +147,15 @@
 <!-- Draft -->
 <div class="screen" id="screen-draft">
   <div class="draft-wrap">
-    <div class="pick-bar" id="pick-bar">
-      <div class="pb-left">
-        <div class="pb-dot" id="pb-dot"></div>
-        <div>
-          <div class="pb-lbl">Now Picking</div>
-          <div class="pb-name" id="pb-name"></div>
-        </div>
-      </div>
-      <div class="pb-right">
-        <button class="btn-back" id="btn-back" onclick="undoPick()" disabled>← Back</button>
-        <div class="pb-badge">Pick <strong id="pb-pick">1</strong> · Round <strong id="pb-round">1</strong></div>
-      </div>
-    </div>
     <div class="draft-body">
       <div id="players-panel">
         <div class="section-lbl">Available Players</div>
         <div id="players-list"></div>
         <button class="show-more" id="show-more">Show 20 More ↓</button>
-        <button class="btn-end" onclick="endDraft()">End Draft</button>
+        <div class="draft-actions">
+          <button class="btn-back" id="btn-back" onclick="undoPick()" disabled>← Undo</button>
+          <button class="btn-end" onclick="endDraft()">End Draft</button>
+        </div>
       </div>
       <div id="teams-panel"></div>
     </div>
@@ -352,7 +336,12 @@
   document.getElementById('btn-start').addEventListener('click', () => {
     const sel = [...selected].sort((a,b) => a - b);
     teams     = sel.map(i => ({ name: NAMES[i], color: COLORS[i], roster: emptyRoster() }));
+    // Build and immediately shuffle remaining so first tap is already unpredictable
     remaining = Array.from({length: teams.length}, (_, i) => i);
+    for (let i = remaining.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [remaining[i], remaining[j]] = [remaining[j], remaining[i]];
+    }
     draftOrder  = [];
     drawIndex   = 0;
     available   = PLAYERS.map(p => p.rank);
@@ -477,18 +466,9 @@
   }
 
   function renderDraft() {
-    renderPickBar();
     renderTeamsPanel();
     renderPlayers();
-  }
-
-  function renderPickBar() {
-    const t = teams[teamForPick(currentPick)];
-    document.getElementById('pb-dot').style.background = t.color;
-    document.getElementById('pb-name').textContent      = t.name;
-    document.getElementById('pb-pick').textContent      = currentPick + 1;
-    document.getElementById('pb-round').textContent     = Math.floor(currentPick / teams.length) + 1;
-    document.getElementById('btn-back').disabled        = currentPick === 0;
+    document.getElementById('btn-back').disabled = currentPick === 0;
   }
 
   function renderTeamsPanel() {
